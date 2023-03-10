@@ -5,6 +5,7 @@ import Root from './routes/root';
 import NotFoundPage from './pages/NotFoundPage';
 import AboutUsPage from './pages/AboutUsPage';
 import MainPage from './pages/MainPage';
+import './index.css';
 
 const router = createBrowserRouter([
   {

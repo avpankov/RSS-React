@@ -8,7 +8,7 @@ class Root extends React.Component {
         <header>
           <div className="wrapper">
             <nav>
-              <ul>
+              <ul className="flex flex-row">
                 <li>
                   <Link to="/">Main</Link>
                 </li>
