@@ -12,7 +12,7 @@ class MainPage extends React.Component {
           <div className="flex flex-row flex-wrap justify-between gap-6">
             <>
               {products.products.map((product) => {
-                return <Card product={product} />;
+                return <Card product={product} key={product.id} />;
               })}
             </>
           </div>
