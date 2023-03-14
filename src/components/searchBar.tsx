@@ -4,7 +4,7 @@ import searchIcon from '../assets/search.svg';
 class SearchBar extends React.Component {
   render() {
     return (
-      <div className="w-[685px] flex flex-row relative py-4 mx-auto">
+      <div className="w-[685px] flex flex-row relative py-6 mx-auto">
         <img
           src={searchIcon}
           width="20px"
