@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from 'react';
 import searchIcon from '../assets/search.svg';
 
-class SearchBar extends React.Component<{}, { searchInputValue: string }> {
-  constructor(props: {} | Readonly<{}>) {
+class SearchBar extends React.Component<Record<string, never>, { searchInputValue: string }> {
+  constructor(props: Record<string, never> | Readonly<Record<string, never>>) {
     super(props);
     this.state = { searchInputValue: '' };
   }
