@@ -2,6 +2,8 @@ import React from 'react';
 import starIcon from '../assets/star.png';
 import { ReactComponent as IconHeart } from '../assets/heart.svg';
 import { IProduct } from 'interfaces';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import placeholder from '../assets/images/no_photo.png';
 
 class Card extends React.Component<{ product: IProduct }> {
   render() {
@@ -10,7 +12,14 @@ class Card extends React.Component<{ product: IProduct }> {
         <div className="p-4 pb-0">
           <div className="w-full h-[195px]">
             <div className={`w-full h-full rounded flex flex-row justify-center items-center`}>
-              <img src={this.props.product.images[0]} alt="" className="max-h-full" />
+              <LazyLoadImage
+                src={this.props.product.images[0]}
+                alt=""
+                width="100%"
+                height="100%"
+                className="max-h-full max-w-fit hover:scale-110 duration-200"
+                placeholderSrc={placeholder}
+              />
             </div>
           </div>
           <div className="flex flex-row justify-between pt-2">
