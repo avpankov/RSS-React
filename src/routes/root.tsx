@@ -1,26 +1,37 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 class Root extends React.Component {
   render() {
     return (
       <>
         <header className="h-[60px] flex flex-row items-center justify-center shadow-md">
-          <div className="wrapper">
+          <div>
             <nav>
               <ul className="flex flex-row items-center content-center space-x-10 text-sm font-semibold text-slate-800">
                 <li>
-                  <Link
+                  <NavLink
                     to="/"
-                    className="underline decoration-brand decoration-2 underline-offset-4 hover:text-brand"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'underline decoration-brand decoration-2 underline-offset-4 hover:text-brand'
+                        : 'hover:text-brand'
+                    }
                   >
                     Main
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/about" className="hover:text-brand">
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'underline decoration-brand decoration-2 underline-offset-4 hover:text-brand'
+                        : 'hover:text-brand'
+                    }
+                  >
                     About
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </nav>
