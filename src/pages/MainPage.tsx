@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from '../components/searchBar';
-import ListOfCards from '../components/listOfCards';
+import SearchBar from '../components/SearchBar';
+import ListOfCards from '../components/ListOfCards';
 
 class MainPage extends React.Component {
   render() {
