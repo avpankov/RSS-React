@@ -1,6 +1,6 @@
 import React from 'react';
-import starIcon from '../assets/star.png';
-import { ReactComponent as IconHeart } from '../assets/heart.svg';
+import starIcon from '../assets/icons/star.png';
+import { ReactComponent as IconHeart } from '../assets/icons/heart.svg';
 import { IProduct } from 'interfaces';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import placeholder from '../assets/images/no_photo.png';
