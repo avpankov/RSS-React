@@ -8,7 +8,7 @@ class ListOfCards extends React.Component {
       <div className="flex flex-row flex-wrap justify-between gap-6">
         <>
           {products.products.map((product) => {
-            return <Card product={product} key={product.id} />;
+            return <Card product={product} key={product.category + product.id} />;
           })}
         </>
       </div>

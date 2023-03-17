@@ -34,9 +34,9 @@ class Card extends React.Component<{ product: IProduct }> {
               {this.props.product.category} • {this.props.product.brand.toLowerCase()}
             </div>
           </div>
-          <div className="text-lg font-bold whitespace-nowrap text-ellipsis overflow-hidden">
+          <h3 className="text-lg font-bold whitespace-nowrap text-ellipsis overflow-hidden">
             {this.props.product.title}
-          </div>
+          </h3>
           <div className="flex flex-row items-center space-x-2">
             <div className="text-2xl font-bold">{this.props.product.price}$</div>
             <div className="p-1 bg-brand text-xs text-white rounded-md">

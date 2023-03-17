@@ -26,7 +26,9 @@ const product = {
 describe('Renders product card', () => {
   it('Renders product card title', () => {
     render(<Card product={product} />);
-    const title = screen.getByText(/Flying Wooden Bird/i);
-    expect(title).toBeInTheDocument();
+    const title = screen.getByRole('heading', {
+      level: 3,
+    });
+    expect(title).toHaveTextContent(/Flying Wooden Bird/i);
   });
 });

@@ -35,7 +35,7 @@ class SearchBar extends React.Component<Record<string, never>, { searchInputValu
           onChange={(event) => this.handleInputChange(event)}
           name="search"
           id="search"
-          placeholder="Search..."
+          placeholder="Search"
           className="w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
         />
       </div>
