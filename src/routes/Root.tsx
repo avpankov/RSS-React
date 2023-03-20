@@ -10,8 +10,16 @@ class Root extends React.Component<object, { name: string }> {
   }
 
   componentDidMount() {
-    if (location.pathname === '/') this.setState({ name: 'Main' });
-    if (location.pathname === '/about') this.setState({ name: 'About' });
+    switch (location.pathname) {
+      case '/':
+        this.setState({ name: 'Main' });
+        break;
+      case '/about':
+        this.setState({ name: 'About' });
+        break;
+      default:
+        this.setState({ name: '404' });
+    }
   }
 
   render() {
