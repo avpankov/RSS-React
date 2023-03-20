@@ -2,22 +2,23 @@ import React, { ChangeEvent } from 'react';
 import searchIcon from '../assets/icons/search.svg';
 
 class SearchBar extends React.Component<Record<string, never>, { searchInputValue: string }> {
-  constructor(props: Record<string, never> | Readonly<Record<string, never>>) {
-    super(props);
-    this.state = { searchInputValue: '' };
+  componentDidMount() {
+    const value = localStorage.getItem('searchInputValue');
+    if (!value) return;
+    if (value) this.setState({ searchInputValue: value });
   }
 
-  componentDidMount() {
-    return this.setState({ searchInputValue: this.checkLocalStorage() });
+  componentWillUnmount() {
+    if (!this.state) return;
+    localStorage.setItem('searchInputValue', this.state.searchInputValue);
   }
 
   checkLocalStorage() {
-    return window.localStorage.getItem('searchInputValue') || '';
+    return this.state ? this.state.searchInputValue : '';
   }
 
   handleInputChange(event: ChangeEvent) {
     this.setState({ searchInputValue: (event.target as HTMLInputElement).value });
-    window.localStorage.setItem('searchInputValue', (event.target as HTMLInputElement).value);
   }
 
   render() {
@@ -31,7 +32,7 @@ class SearchBar extends React.Component<Record<string, never>, { searchInputValu
         />
         <input
           type="text"
-          value={this.state.searchInputValue}
+          value={this.checkLocalStorage()}
           onChange={(event) => this.handleInputChange(event)}
           name="search"
           id="search"
