@@ -1,7 +1,19 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
-class Root extends React.Component {
+class Root extends React.Component<object, { name: string }> {
+  constructor(props: { name: string }) {
+    super(props);
+    this.state = {
+      name: 'Main',
+    };
+  }
+
+  componentDidMount() {
+    if (location.pathname === '/') this.setState({ name: 'Main' });
+    if (location.pathname === '/about') this.setState({ name: 'About' });
+  }
+
   render() {
     return (
       <>
@@ -17,6 +29,7 @@ class Root extends React.Component {
                         ? 'underline decoration-brand decoration-2 underline-offset-4 hover:text-brand'
                         : 'hover:text-brand'
                     }
+                    onClick={() => this.setState({ name: 'Main' })}
                   >
                     Main
                   </NavLink>
@@ -29,6 +42,7 @@ class Root extends React.Component {
                         ? 'underline decoration-brand decoration-2 underline-offset-4 hover:text-brand'
                         : 'hover:text-brand'
                     }
+                    onClick={() => this.setState({ name: 'About' })}
                   >
                     About
                   </NavLink>
@@ -36,6 +50,7 @@ class Root extends React.Component {
               </ul>
             </nav>
           </div>
+          <h2 className="absolute left-0">Page: {this.state.name}</h2>
         </header>
         <main>
           <Outlet />
