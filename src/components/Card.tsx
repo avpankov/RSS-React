@@ -13,7 +13,7 @@ class Card extends React.Component<{ product: IProduct }> {
           <div className="w-full h-[195px]">
             <div className={`w-full h-full rounded flex flex-row justify-center items-center`}>
               <LazyLoadImage
-                src={this.props.product.images[0]}
+                src={this.props.product.thumbnail ? this.props.product.thumbnail : placeholder}
                 alt=""
                 width="100%"
                 height="100%"

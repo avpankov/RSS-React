@@ -4,10 +4,12 @@ export interface IProduct {
   description: string;
   price: number;
   discountPercentage: number;
-  rating: number;
-  stock: number;
+  rating?: number;
+  stock?: number;
   brand: string;
   category: string;
   thumbnail: string;
-  images: string[];
+  images: string[] | null;
+  agreement?: boolean;
+  notifications?: string;
 }
