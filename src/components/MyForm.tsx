@@ -1,8 +1,9 @@
-import Card from './Card';
 import { IProduct } from 'interfaces';
 import React, { createRef, FormEvent, RefObject } from 'react';
 import { Form } from 'react-router-dom';
+import { determineTodaysDate } from '../utils/utils';
 import products from '../data/products.json';
+import ListOfCards from './ListOfCards';
 
 interface FormStateType {
   productImageUrl: string;
@@ -62,6 +63,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
     const radio = this.notifications.current;
     const inputs = radio?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     const arr = Array.from(inputs);
+    console.log(determineTodaysDate());
     return arr.find((el) => el.checked)?.value;
   }
 
@@ -149,10 +151,11 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
             <div className="my-6">
               <label className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">Price</span>
+                <span className="w-[32%] font-semibold">Price ($)</span>
                 <input
                   type="number"
                   name="price"
+                  min={1}
                   ref={this.price}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
@@ -160,10 +163,12 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
             <div className="my-6">
               <label className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">Discount</span>
+                <span className="w-[32%] font-semibold">Discount (%)</span>
                 <input
                   type="number"
                   name="price"
+                  min={1}
+                  max={99}
                   ref={this.discountPercentage}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
@@ -171,10 +176,11 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
             <div className="my-6">
               <label className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">Date of delivery</span>
+                <span className="w-[32%] font-semibold">Delivery availability from</span>
                 <input
                   type="date"
                   name="date"
+                  min={determineTodaysDate()}
                   ref={this.date}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
@@ -242,13 +248,9 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
           </Form>
           <section>
-            <>
-              {this.state.products
-                .filter((product) => product.notifications)
-                .map((product) => {
-                  return <Card product={product} key={product.id} />;
-                })}
-            </>
+            <ListOfCards
+              products={this.state.products.filter((product) => product.notifications)}
+            />
           </section>
         </div>
       </div>
