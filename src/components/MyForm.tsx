@@ -93,7 +93,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
   render() {
     return (
       <div className="container mx-auto">
-        <div className="w-1/2 mx-auto pt-6">
+        <div className="w-1/2 mx-auto py-6">
           <h2 className="text-xl font-semibold">New product form</h2>
           <Form onSubmit={(event) => this.handleSubmit(event)}>
             <div className="my-6">
@@ -247,12 +247,10 @@ class MyForm extends React.Component<unknown, FormStateType> {
               </button>
             </div>
           </Form>
-          <section>
-            <ListOfCards
-              products={this.state.products.filter((product) => product.notifications)}
-            />
-          </section>
         </div>
+        <section className="flex flex-row flex-wrap justify-start gap-6">
+          <ListOfCards products={this.state.products.filter((product) => product.notifications)} />
+        </section>
       </div>
     );
   }

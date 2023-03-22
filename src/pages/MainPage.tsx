@@ -8,7 +8,9 @@ class MainPage extends React.Component {
     return (
       <div className="container mx-auto">
         <SearchBar />
-        <ListOfCards products={products.products} />
+        <div className="flex flex-row flex-wrap justify-between gap-6">
+          <ListOfCards products={products.products} />
+        </div>
       </div>
     );
   }
