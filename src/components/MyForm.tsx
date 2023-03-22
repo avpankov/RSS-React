@@ -8,6 +8,7 @@ import ListOfCards from './ListOfCards';
 interface FormStateType {
   productImageUrl: string;
   products: IProduct[];
+  showMessage: boolean;
 }
 
 class MyForm extends React.Component<unknown, FormStateType> {
@@ -15,12 +16,9 @@ class MyForm extends React.Component<unknown, FormStateType> {
   description: RefObject<HTMLTextAreaElement>;
   price: RefObject<HTMLInputElement>;
   discountPercentage: RefObject<HTMLInputElement>;
-  rating: RefObject<HTMLInputElement>;
-  stock: RefObject<HTMLInputElement>;
   brand: RefObject<HTMLInputElement>;
   category: RefObject<HTMLSelectElement>;
   thumbnail: RefObject<HTMLInputElement>;
-  images: RefObject<HTMLInputElement>;
   date: RefObject<HTMLInputElement>;
   agreement: RefObject<HTMLInputElement>;
   notifications: RefObject<HTMLDivElement>;
@@ -31,18 +29,16 @@ class MyForm extends React.Component<unknown, FormStateType> {
     this.description = createRef();
     this.price = createRef();
     this.discountPercentage = createRef();
-    this.rating = createRef();
-    this.stock = createRef();
     this.brand = createRef();
     this.category = createRef();
     this.thumbnail = createRef();
-    this.images = createRef();
     this.date = createRef();
     this.agreement = createRef();
     this.notifications = createRef();
     this.state = {
       productImageUrl: '',
       products: products.products,
+      showMessage: false,
     };
   }
 
@@ -60,42 +56,64 @@ class MyForm extends React.Component<unknown, FormStateType> {
   }
 
   handleRadioValue() {
-    const radio = this.notifications.current;
-    const inputs = radio?.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    const radio = this.notifications.current as HTMLInputElement;
+    const inputs = radio.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     const arr = Array.from(inputs);
-    console.log(determineTodaysDate());
     return arr.find((el) => el.checked)?.value;
   }
 
   handleSubmit(event: FormEvent) {
+    event.preventDefault();
     const arr = this.state.products;
     const newProduct: IProduct = {
       id: arr.length + 1,
-      title: this.title.current ? this.title.current.value : '',
-      description: this.description.current ? this.description.current.value : '',
-      price: this.price.current ? Number(this.price.current.value) : 0,
-      discountPercentage: this.discountPercentage.current
-        ? Number(this.discountPercentage.current.value)
-        : 0,
-      brand: this.brand.current ? this.brand.current.value : '',
-      category: this.category.current ? this.category.current.value : '',
+      title: (this.title.current as HTMLInputElement).value,
+      description: (this.description.current as HTMLTextAreaElement).value,
+      price: Number((this.price.current as HTMLInputElement).value),
+      discountPercentage: Number((this.discountPercentage.current as HTMLInputElement).value),
+      brand: (this.brand.current as HTMLInputElement).value,
+      category: (this.category.current as HTMLSelectElement).value,
       thumbnail: this.state.productImageUrl,
-      images: null,
-      agreement: this.agreement.current ? this.agreement.current.checked : false,
+      agreement: (this.agreement.current as HTMLInputElement).checked,
       notifications: this.handleRadioValue(),
     };
     arr.push(newProduct);
-    this.setState({ products: arr });
-    console.log(this.state.products);
-    event.preventDefault();
+    this.setState({ products: arr, showMessage: true });
+    setTimeout(() => {
+      this.setState({ showMessage: false });
+    }, 3000);
+    this.resetForm();
+  }
+
+  resetForm() {
+    (this.title.current as HTMLInputElement).value = '';
+    (this.description.current as HTMLTextAreaElement).value = '';
+    (this.price.current as HTMLInputElement).value = '';
+    (this.discountPercentage.current as HTMLInputElement).value = '';
+    (this.brand.current as HTMLInputElement).value = '';
+    (this.category.current as HTMLSelectElement).value = 'smartphones';
+    (this.thumbnail.current as HTMLInputElement).value = '';
+    (this.date.current as HTMLInputElement).value = '';
+    (this.agreement.current as HTMLInputElement).value = '';
+    (this.notifications.current as HTMLInputElement).value = '';
+    this.setState({ productImageUrl: '' });
   }
 
   render() {
     return (
       <div className="container mx-auto">
+        {
+          <div
+            className={`fixed px-6 py-3 bg-green-200 text-green-400 rounded-md right-2 top-[6px] opacity-0 duration-[0.3s] select-none ${
+              this.state.showMessage && 'opacity-100'
+            }`}
+          >
+            Data has been saved
+          </div>
+        }
         <div className="w-1/2 mx-auto py-6">
           <h2 className="text-xl font-semibold">New product form</h2>
-          <Form onSubmit={(event) => this.handleSubmit(event)}>
+          <Form onSubmit={(event) => this.handleSubmit(event)} onReset={() => this.resetForm()}>
             <div className="my-6">
               <label className="flex w-full items-center">
                 <span className="w-[32%] font-semibold">Product name</span>
@@ -240,7 +258,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
                 Save
               </button>
               <button
-                type="button"
+                type="reset"
                 className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900"
               >
                 Cancel
@@ -248,7 +266,10 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
           </Form>
         </div>
-        <section className="flex flex-row flex-wrap justify-start gap-6">
+        {this.state.products.filter((product) => product.notifications).length > 0 && (
+          <h2 className="text-xl font-semibold mb-6">List of my products</h2>
+        )}
+        <section className="flex flex-row flex-wrap justify-start gap-6 mb-6">
           <ListOfCards products={this.state.products.filter((product) => product.notifications)} />
         </section>
       </div>
