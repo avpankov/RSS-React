@@ -5,6 +5,7 @@ import products from '../data/products.json';
 import ListOfCards from './ListOfCards';
 import { determineTodaysDate } from '../utils/utils';
 import { validateForm } from '../utils/validateForm';
+import { ReactComponent as IconCheck } from '../assets/icons/check.svg';
 
 interface FormStateType {
   productImageUrl: string;
@@ -17,12 +18,13 @@ class MyForm extends React.Component<unknown, FormStateType> {
   description: RefObject<HTMLTextAreaElement>;
   price: RefObject<HTMLInputElement>;
   discountPercentage: RefObject<HTMLInputElement>;
+  stock: RefObject<HTMLInputElement>;
   brand: RefObject<HTMLInputElement>;
   category: RefObject<HTMLSelectElement>;
   thumbnail: RefObject<HTMLInputElement>;
   date: RefObject<HTMLInputElement>;
   delivery: RefObject<HTMLInputElement>;
-  tracking: RefObject<HTMLDivElement>;
+  tracking: RefObject<HTMLInputElement>;
 
   constructor(props: IProduct) {
     super(props);
@@ -30,6 +32,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
     this.description = createRef();
     this.price = createRef();
     this.discountPercentage = createRef();
+    this.stock = createRef();
     this.brand = createRef();
     this.category = createRef();
     this.thumbnail = createRef();
@@ -60,7 +63,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
     const radio = this.tracking.current as HTMLInputElement;
     const inputs = radio.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     const arr = Array.from(inputs);
-    return arr.find((el) => el.checked)?.value;
+    return arr.find((el) => el.checked)?.value === 'on' ? true : false;
   }
 
   handleSubmit(event: FormEvent) {
@@ -71,6 +74,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
       category: this.category,
       price: this.price,
       discountPercentage: this.discountPercentage,
+      stock: this.stock,
       date: this.date,
       thumbnail: this.thumbnail,
     };
@@ -82,11 +86,13 @@ class MyForm extends React.Component<unknown, FormStateType> {
         description: (this.description.current as HTMLTextAreaElement).value,
         price: Number((this.price.current as HTMLInputElement).value),
         discountPercentage: Number((this.discountPercentage.current as HTMLInputElement).value),
+        stock: Number((this.stock.current as HTMLInputElement).value),
         brand: (this.brand.current as HTMLInputElement).value,
         category: (this.category.current as HTMLSelectElement).value,
         thumbnail: this.state.productImageUrl,
         delivery: (this.delivery.current as HTMLInputElement).checked,
         tracking: this.handleRadioValue(),
+        new: true,
       };
       arr.push(newProduct);
       this.setState({ products: arr, showMessage: true });
@@ -102,11 +108,14 @@ class MyForm extends React.Component<unknown, FormStateType> {
       <div className="container mx-auto">
         {
           <div
-            className={`fixed px-6 py-3 bg-green-200 text-green-400 rounded-md right-2 top-[6px] opacity-0 duration-[0.3s] select-none ${
+            className={`fixed flex items-center space-x-3 px-5 py-3 bg-green-500 text-white rounded-md right-2 top-[6px] opacity-0 duration-[0.3s] select-none ${
               this.state.showMessage && 'opacity-100'
             }`}
           >
-            Data has been saved
+            <span>
+              <IconCheck className="w-[22px] h-[22px] fill-white" />
+            </span>
+            <span className="font-semibold">Data has been saved</span>
           </div>
         }
         <div className="w-1/2 mx-auto py-6">
@@ -215,6 +224,21 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
             <div className="my-6">
               <label className="flex w-full items-center relative">
+                <span className="w-[32%] font-semibold">Stock</span>
+                <input
+                  type="number"
+                  name="stock"
+                  min={1}
+                  ref={this.stock}
+                  className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                />
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
+              </label>
+            </div>
+            <div className="my-6">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Delivery availability from</span>
                 <input
                   type="date"
@@ -270,7 +294,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
                 <textarea
                   name="description"
                   ref={this.description}
-                  rows={3}
+                  rows={2}
                   className="w-[68%] px-4 py-2 rounded-md border border-slate-200 outline-brand"
                 ></textarea>
               </label>
@@ -291,11 +315,11 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
           </Form>
         </div>
-        {this.state.products.filter((product) => product.tracking).length > 0 && (
+        {this.state.products.filter((product) => product.new).length > 0 && (
           <h2 className="text-xl font-semibold mb-6">List of my products</h2>
         )}
         <section className="flex flex-row flex-wrap justify-start gap-6 mb-6">
-          <ListOfCards products={this.state.products.filter((product) => product.tracking)} />
+          <ListOfCards products={this.state.products.filter((product) => product.new)} />
         </section>
       </div>
     );

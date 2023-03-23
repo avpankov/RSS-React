@@ -13,7 +13,8 @@ export interface IProduct {
   thumbnail: string;
   images?: string[];
   delivery?: boolean;
-  tracking?: string;
+  tracking?: boolean;
+  new?: boolean
 }
 
 export interface IValidationFields {
@@ -22,6 +23,7 @@ export interface IValidationFields {
   category: RefObject<HTMLSelectElement>;
   price: RefObject<HTMLInputElement>;
   discountPercentage: RefObject<HTMLInputElement>;
+  stock: RefObject<HTMLInputElement>;
   date: RefObject<HTMLInputElement>;
   thumbnail: RefObject<HTMLInputElement>;
 }

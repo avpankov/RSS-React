@@ -8,6 +8,7 @@ export function validateForm(newProduct: IValidationFields) {
   arr.push(validateCategorySelect(newProduct.category));
   arr.push(validateInput(newProduct.price));
   arr.push(validateInput(newProduct.discountPercentage));
+  arr.push(validateInput(newProduct.stock));
   arr.push(validateInput(newProduct.date));
   arr.push(validateInput(newProduct.thumbnail));
   return arr.every((el) => el === true) ? true : false;
