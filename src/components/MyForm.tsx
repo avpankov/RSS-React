@@ -1,9 +1,10 @@
-import { IProduct } from 'interfaces';
+import { IProduct, IValidationFields } from 'interfaces';
 import React, { createRef, FormEvent, RefObject } from 'react';
 import { Form } from 'react-router-dom';
-import { determineTodaysDate } from '../utils/utils';
 import products from '../data/products.json';
 import ListOfCards from './ListOfCards';
+import { determineTodaysDate } from '../utils/utils';
+import { validateForm } from '../utils/validateForm';
 
 interface FormStateType {
   productImageUrl: string;
@@ -20,8 +21,8 @@ class MyForm extends React.Component<unknown, FormStateType> {
   category: RefObject<HTMLSelectElement>;
   thumbnail: RefObject<HTMLInputElement>;
   date: RefObject<HTMLInputElement>;
-  agreement: RefObject<HTMLInputElement>;
-  notifications: RefObject<HTMLDivElement>;
+  delivery: RefObject<HTMLInputElement>;
+  tracking: RefObject<HTMLDivElement>;
 
   constructor(props: IProduct) {
     super(props);
@@ -33,8 +34,8 @@ class MyForm extends React.Component<unknown, FormStateType> {
     this.category = createRef();
     this.thumbnail = createRef();
     this.date = createRef();
-    this.agreement = createRef();
-    this.notifications = createRef();
+    this.delivery = createRef();
+    this.tracking = createRef();
     this.state = {
       productImageUrl: '',
       products: products.products,
@@ -56,7 +57,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
   }
 
   handleRadioValue() {
-    const radio = this.notifications.current as HTMLInputElement;
+    const radio = this.tracking.current as HTMLInputElement;
     const inputs = radio.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     const arr = Array.from(inputs);
     return arr.find((el) => el.checked)?.value;
@@ -64,39 +65,36 @@ class MyForm extends React.Component<unknown, FormStateType> {
 
   handleSubmit(event: FormEvent) {
     event.preventDefault();
-    const arr = this.state.products;
-    const newProduct: IProduct = {
-      id: arr.length + 1,
-      title: (this.title.current as HTMLInputElement).value,
-      description: (this.description.current as HTMLTextAreaElement).value,
-      price: Number((this.price.current as HTMLInputElement).value),
-      discountPercentage: Number((this.discountPercentage.current as HTMLInputElement).value),
-      brand: (this.brand.current as HTMLInputElement).value,
-      category: (this.category.current as HTMLSelectElement).value,
-      thumbnail: this.state.productImageUrl,
-      agreement: (this.agreement.current as HTMLInputElement).checked,
-      notifications: this.handleRadioValue(),
+    const fields: IValidationFields = {
+      title: this.title,
+      brand: this.brand,
+      category: this.category,
+      price: this.price,
+      discountPercentage: this.discountPercentage,
+      date: this.date,
+      thumbnail: this.thumbnail,
     };
-    arr.push(newProduct);
-    this.setState({ products: arr, showMessage: true });
-    setTimeout(() => {
-      this.setState({ showMessage: false });
-    }, 3000);
-    this.resetForm();
-  }
-
-  resetForm() {
-    (this.title.current as HTMLInputElement).value = '';
-    (this.description.current as HTMLTextAreaElement).value = '';
-    (this.price.current as HTMLInputElement).value = '';
-    (this.discountPercentage.current as HTMLInputElement).value = '';
-    (this.brand.current as HTMLInputElement).value = '';
-    (this.category.current as HTMLSelectElement).value = 'smartphones';
-    (this.thumbnail.current as HTMLInputElement).value = '';
-    (this.date.current as HTMLInputElement).value = '';
-    (this.agreement.current as HTMLInputElement).value = '';
-    (this.notifications.current as HTMLInputElement).value = '';
-    this.setState({ productImageUrl: '' });
+    if (validateForm(fields)) {
+      const arr = this.state.products;
+      const newProduct: IProduct = {
+        id: arr.length + 1,
+        title: (this.title.current as HTMLInputElement).value,
+        description: (this.description.current as HTMLTextAreaElement).value,
+        price: Number((this.price.current as HTMLInputElement).value),
+        discountPercentage: Number((this.discountPercentage.current as HTMLInputElement).value),
+        brand: (this.brand.current as HTMLInputElement).value,
+        category: (this.category.current as HTMLSelectElement).value,
+        thumbnail: this.state.productImageUrl,
+        delivery: (this.delivery.current as HTMLInputElement).checked,
+        tracking: this.handleRadioValue(),
+      };
+      arr.push(newProduct);
+      this.setState({ products: arr, showMessage: true });
+      setTimeout(() => {
+        this.setState({ showMessage: false });
+      }, 3000);
+      (event.target as HTMLFormElement).reset();
+    }
   }
 
   render() {
@@ -113,37 +111,51 @@ class MyForm extends React.Component<unknown, FormStateType> {
         }
         <div className="w-1/2 mx-auto py-6">
           <h2 className="text-xl font-semibold">New product form</h2>
-          <Form onSubmit={(event) => this.handleSubmit(event)} onReset={() => this.resetForm()}>
+          <Form
+            onSubmit={(event) => this.handleSubmit(event)}
+            onReset={(event) => (event.target as HTMLFormElement).reset}
+            id="form"
+          >
             <div className="my-6">
-              <label className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">Product name</span>
+              <label className="flex w-full items-center relative">
+                <span className="w-[32%] font-semibold">Product title</span>
                 <input
                   type="text"
                   name="title"
                   ref={this.title}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
               </label>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">Brand name</span>
+              <label className="flex w-full items-center relative">
+                <span className="w-[32%] font-semibold">Brand</span>
                 <input
                   type="text"
                   name="brand"
                   ref={this.brand}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
               </label>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Category</span>
                 <select
                   name="category"
                   ref={this.category}
+                  defaultValue="defaultValue"
                   className="w-[68%] h-[48px] px-4 py-2 rounded-md border border-slate-200 outline-brand"
                 >
+                  <option value="defaultValue" disabled>
+                    Choose category
+                  </option>
                   <option value="smartphones">smartphones</option>
                   <option value="laptops">laptops</option>
                   <option value="fragrances">fragrances</option>
@@ -165,10 +177,13 @@ class MyForm extends React.Component<unknown, FormStateType> {
                   <option value="motorcycle">motorcycle</option>
                   <option value="lighting">lighting</option>
                 </select>
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
               </label>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Price ($)</span>
                 <input
                   type="number"
@@ -177,10 +192,13 @@ class MyForm extends React.Component<unknown, FormStateType> {
                   ref={this.price}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
               </label>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Discount (%)</span>
                 <input
                   type="number"
@@ -190,10 +208,13 @@ class MyForm extends React.Component<unknown, FormStateType> {
                   ref={this.discountPercentage}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
               </label>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Delivery availability from</span>
                 <input
                   type="date"
@@ -202,33 +223,34 @@ class MyForm extends React.Component<unknown, FormStateType> {
                   ref={this.date}
                   className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
                 />
-              </label>
-            </div>
-            <div className="my-6">
-              <label className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">Agreement to terms of use</span>
-                <input type="checkbox" name="agreement" ref={this.agreement} />
-              </label>
-            </div>
-            <div className="my-6">
-              <div className="flex w-full items-center">
-                <span className="w-[32%] font-semibold">
-                  Receive notifications about promo, sales, etc.
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
                 </span>
-                <div className="flex space-x-4" ref={this.notifications}>
+              </label>
+            </div>
+            <div className="my-6">
+              <label className="flex w-full items-center relative">
+                <span className="w-[32%] font-semibold">Free delivery</span>
+                <input type="checkbox" name="agreement" ref={this.delivery} />
+              </label>
+            </div>
+            <div className="my-6">
+              <div className="flex w-full items-center relative">
+                <span className="w-[32%] font-semibold">Track delivery status</span>
+                <div className="flex space-x-4" ref={this.tracking}>
                   <label className="flex items-center space-x-1">
-                    <input type="radio" name="notifications" value="on" defaultChecked />
+                    <input type="radio" name="tracking" value="on" />
                     <span>on</span>
                   </label>
                   <label className="flex items-center space-x-1">
-                    <input type="radio" name="notifications" value="off" />
+                    <input type="radio" name="tracking" value="off" defaultChecked />
                     <span>off</span>
                   </label>
                 </div>
               </div>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Upload image</span>
                 <input
                   type="file"
@@ -237,10 +259,13 @@ class MyForm extends React.Component<unknown, FormStateType> {
                   accept=".jpg, .jpeg, .png"
                   onChange={() => this.handleUploadedImage()}
                 />
+                <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+                  This field is required.
+                </span>
               </label>
             </div>
             <div className="my-6">
-              <label className="flex w-full items-center">
+              <label className="flex w-full items-center relative">
                 <span className="w-[32%] font-semibold">Description</span>
                 <textarea
                   name="description"
@@ -266,11 +291,11 @@ class MyForm extends React.Component<unknown, FormStateType> {
             </div>
           </Form>
         </div>
-        {this.state.products.filter((product) => product.notifications).length > 0 && (
+        {this.state.products.filter((product) => product.tracking).length > 0 && (
           <h2 className="text-xl font-semibold mb-6">List of my products</h2>
         )}
         <section className="flex flex-row flex-wrap justify-start gap-6 mb-6">
-          <ListOfCards products={this.state.products.filter((product) => product.notifications)} />
+          <ListOfCards products={this.state.products.filter((product) => product.tracking)} />
         </section>
       </div>
     );
