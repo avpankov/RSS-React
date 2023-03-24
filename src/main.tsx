@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Root from './routes/Root';
+import MainPage from './pages/MainPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AboutUsPage from './pages/AboutUsPage';
-import MainPage from './pages/MainPage';
+import FormPage from './components/MyForm';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -13,10 +14,6 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <NotFoundPage />,
     children: [
-      {
-        path: '/about',
-        element: <AboutUsPage />,
-      },
       {
         path: '/',
         element: <MainPage />,
@@ -28,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <Navigate to="/404" replace />,
+      },
+      {
+        path: '/about',
+        element: <AboutUsPage />,
+      },
+      {
+        path: '/form',
+        element: <FormPage />,
       },
     ],
   },

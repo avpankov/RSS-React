@@ -17,6 +17,9 @@ class Root extends React.Component<object, { name: string }> {
       case '/about':
         this.setState({ name: 'About' });
         break;
+      case '/form':
+        this.setState({ name: 'Form' });
+        break;
       default:
         this.setState({ name: '404' });
     }
@@ -53,6 +56,19 @@ class Root extends React.Component<object, { name: string }> {
                     onClick={() => this.setState({ name: 'About' })}
                   >
                     About
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/form"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'underline decoration-brand decoration-2 underline-offset-4 hover:text-brand'
+                        : 'hover:text-brand'
+                    }
+                    onClick={() => this.setState({ name: 'Form' })}
+                  >
+                    Form
                   </NavLink>
                 </li>
               </ul>

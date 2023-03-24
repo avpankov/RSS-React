@@ -15,7 +15,9 @@
         "https://i.dummyjson.com/data/products/1/1.jpg",
         "https://i.dummyjson.com/data/products/1/3.jpg",
         "https://i.dummyjson.com/data/products/1/4.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 2,
@@ -33,7 +35,9 @@
         "https://i.dummyjson.com/data/products/2/2.jpg",
         "https://i.dummyjson.com/data/products/2/3.jpg",
         "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 3,
@@ -46,7 +50,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
+      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 4,
@@ -65,7 +71,9 @@
         "https://i.dummyjson.com/data/products/4/3.jpg",
         "https://i.dummyjson.com/data/products/4/4.jpg",
         "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 5,
@@ -82,7 +90,9 @@
         "https://i.dummyjson.com/data/products/5/1.jpg",
         "https://i.dummyjson.com/data/products/5/2.jpg",
         "https://i.dummyjson.com/data/products/5/3.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 6,
@@ -100,7 +110,9 @@
         "https://i.dummyjson.com/data/products/6/2.jpg",
         "https://i.dummyjson.com/data/products/6/3.png",
         "https://i.dummyjson.com/data/products/6/4.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 7,
@@ -118,7 +130,9 @@
         "https://i.dummyjson.com/data/products/7/2.jpg",
         "https://i.dummyjson.com/data/products/7/3.jpg",
         "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 8,
@@ -137,7 +151,9 @@
         "https://i.dummyjson.com/data/products/8/3.jpg",
         "https://i.dummyjson.com/data/products/8/4.jpg",
         "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 9,
@@ -156,7 +172,9 @@
         "https://i.dummyjson.com/data/products/9/3.png",
         "https://i.dummyjson.com/data/products/9/4.jpg",
         "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 10,
@@ -174,7 +192,9 @@
         "https://i.dummyjson.com/data/products/10/2.jpg",
         "https://i.dummyjson.com/data/products/10/3.jpg",
         "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 11,
@@ -192,7 +212,9 @@
         "https://i.dummyjson.com/data/products/11/2.jpg",
         "https://i.dummyjson.com/data/products/11/3.jpg",
         "https://i.dummyjson.com/data/products/11/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 12,
@@ -211,7 +233,9 @@
         "https://i.dummyjson.com/data/products/12/3.png",
         "https://i.dummyjson.com/data/products/12/4.jpg",
         "https://i.dummyjson.com/data/products/12/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 13,
@@ -230,7 +254,9 @@
         "https://i.dummyjson.com/data/products/13/3.jpg",
         "https://i.dummyjson.com/data/products/13/4.jpg",
         "https://i.dummyjson.com/data/products/13/thumbnail.webp"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 14,
@@ -248,7 +274,9 @@
         "https://i.dummyjson.com/data/products/14/2.jpg",
         "https://i.dummyjson.com/data/products/14/3.jpg",
         "https://i.dummyjson.com/data/products/14/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 15,
@@ -267,7 +295,9 @@
         "https://i.dummyjson.com/data/products/15/3.jpg",
         "https://i.dummyjson.com/data/products/15/4.jpg",
         "https://i.dummyjson.com/data/products/15/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 16,
@@ -286,7 +316,9 @@
         "https://i.dummyjson.com/data/products/16/3.jpg",
         "https://i.dummyjson.com/data/products/16/4.jpg",
         "https://i.dummyjson.com/data/products/16/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 17,
@@ -304,7 +336,9 @@
         "https://i.dummyjson.com/data/products/17/2.jpg",
         "https://i.dummyjson.com/data/products/17/3.jpg",
         "https://i.dummyjson.com/data/products/17/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 18,
@@ -323,7 +357,9 @@
         "https://i.dummyjson.com/data/products/18/3.jpg",
         "https://i.dummyjson.com/data/products/18/4.jpg",
         "https://i.dummyjson.com/data/products/18/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 19,
@@ -341,7 +377,9 @@
         "https://i.dummyjson.com/data/products/19/2.jpg",
         "https://i.dummyjson.com/data/products/19/3.png",
         "https://i.dummyjson.com/data/products/19/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 20,
@@ -360,7 +398,9 @@
         "https://i.dummyjson.com/data/products/20/3.jpg",
         "https://i.dummyjson.com/data/products/20/4.jpg",
         "https://i.dummyjson.com/data/products/20/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 21,
@@ -377,7 +417,9 @@
         "https://i.dummyjson.com/data/products/21/1.png",
         "https://i.dummyjson.com/data/products/21/2.jpg",
         "https://i.dummyjson.com/data/products/21/3.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 22,
@@ -394,7 +436,9 @@
         "https://i.dummyjson.com/data/products/22/1.jpg",
         "https://i.dummyjson.com/data/products/22/2.jpg",
         "https://i.dummyjson.com/data/products/22/3.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 23,
@@ -413,7 +457,9 @@
         "https://i.dummyjson.com/data/products/23/3.jpg",
         "https://i.dummyjson.com/data/products/23/4.jpg",
         "https://i.dummyjson.com/data/products/23/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 24,
@@ -432,7 +478,9 @@
         "https://i.dummyjson.com/data/products/24/3.jpg",
         "https://i.dummyjson.com/data/products/24/4.jpg",
         "https://i.dummyjson.com/data/products/24/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 25,
@@ -451,7 +499,9 @@
         "https://i.dummyjson.com/data/products/25/3.png",
         "https://i.dummyjson.com/data/products/25/4.jpg",
         "https://i.dummyjson.com/data/products/25/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 26,
@@ -471,7 +521,9 @@
         "https://i.dummyjson.com/data/products/26/4.jpg",
         "https://i.dummyjson.com/data/products/26/5.jpg",
         "https://i.dummyjson.com/data/products/26/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 27,
@@ -490,7 +542,9 @@
         "https://i.dummyjson.com/data/products/27/3.jpg",
         "https://i.dummyjson.com/data/products/27/4.jpg",
         "https://i.dummyjson.com/data/products/27/thumbnail.webp"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 28,
@@ -509,7 +563,9 @@
         "https://i.dummyjson.com/data/products/28/3.png",
         "https://i.dummyjson.com/data/products/28/4.jpg",
         "https://i.dummyjson.com/data/products/28/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 29,
@@ -528,7 +584,9 @@
         "https://i.dummyjson.com/data/products/29/3.webp",
         "https://i.dummyjson.com/data/products/29/4.webp",
         "https://i.dummyjson.com/data/products/29/thumbnail.webp"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 30,
@@ -546,7 +604,9 @@
         "https://i.dummyjson.com/data/products/30/2.jpg",
         "https://i.dummyjson.com/data/products/30/3.jpg",
         "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 31,
@@ -565,7 +625,9 @@
         "https://i.dummyjson.com/data/products/31/3.jpg",
         "https://i.dummyjson.com/data/products/31/4.jpg",
         "https://i.dummyjson.com/data/products/31/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 32,
@@ -583,7 +645,9 @@
         "https://i.dummyjson.com/data/products/32/2.jpg",
         "https://i.dummyjson.com/data/products/32/3.jpg",
         "https://i.dummyjson.com/data/products/32/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 33,
@@ -602,7 +666,9 @@
         "https://i.dummyjson.com/data/products/33/3.jpg",
         "https://i.dummyjson.com/data/products/33/4.jpg",
         "https://i.dummyjson.com/data/products/33/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 34,
@@ -621,7 +687,9 @@
         "https://i.dummyjson.com/data/products/34/3.jpg",
         "https://i.dummyjson.com/data/products/34/4.jpg",
         "https://i.dummyjson.com/data/products/34/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 35,
@@ -640,7 +708,9 @@
         "https://i.dummyjson.com/data/products/35/3.jpg",
         "https://i.dummyjson.com/data/products/35/4.jpg",
         "https://i.dummyjson.com/data/products/35/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 36,
@@ -659,7 +729,9 @@
         "https://i.dummyjson.com/data/products/36/3.webp",
         "https://i.dummyjson.com/data/products/36/4.jpg",
         "https://i.dummyjson.com/data/products/36/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 37,
@@ -678,7 +750,9 @@
         "https://i.dummyjson.com/data/products/37/3.jpg",
         "https://i.dummyjson.com/data/products/37/4.jpg",
         "https://i.dummyjson.com/data/products/37/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 38,
@@ -696,7 +770,9 @@
         "https://i.dummyjson.com/data/products/38/2.jpg",
         "https://i.dummyjson.com/data/products/38/3.jpg",
         "https://i.dummyjson.com/data/products/38/4.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 39,
@@ -715,7 +791,9 @@
         "https://i.dummyjson.com/data/products/39/3.jpg",
         "https://i.dummyjson.com/data/products/39/4.jpg",
         "https://i.dummyjson.com/data/products/39/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 40,
@@ -731,7 +809,9 @@
       "images": [
         "https://i.dummyjson.com/data/products/40/1.jpg",
         "https://i.dummyjson.com/data/products/40/2.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 41,
@@ -750,7 +830,9 @@
         "https://i.dummyjson.com/data/products/41/3.jpg",
         "https://i.dummyjson.com/data/products/41/4.jpg",
         "https://i.dummyjson.com/data/products/41/thumbnail.webp"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 42,
@@ -769,7 +851,9 @@
         "https://i.dummyjson.com/data/products/42/3.png",
         "https://i.dummyjson.com/data/products/42/4.jpg",
         "https://i.dummyjson.com/data/products/42/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 43,
@@ -788,7 +872,9 @@
         "https://i.dummyjson.com/data/products/43/3.jpg",
         "https://i.dummyjson.com/data/products/43/4.jpg",
         "https://i.dummyjson.com/data/products/43/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 44,
@@ -807,7 +893,9 @@
         "https://i.dummyjson.com/data/products/44/3.jpg",
         "https://i.dummyjson.com/data/products/44/4.jpg",
         "https://i.dummyjson.com/data/products/44/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 45,
@@ -826,7 +914,9 @@
         "https://i.dummyjson.com/data/products/45/3.jpg",
         "https://i.dummyjson.com/data/products/45/4.jpg",
         "https://i.dummyjson.com/data/products/45/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 46,
@@ -845,7 +935,9 @@
         "https://i.dummyjson.com/data/products/46/3.jpg",
         "https://i.dummyjson.com/data/products/46/4.jpg",
         "https://i.dummyjson.com/data/products/46/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 47,
@@ -863,7 +955,9 @@
         "https://i.dummyjson.com/data/products/47/2.jpg",
         "https://i.dummyjson.com/data/products/47/3.jpg",
         "https://i.dummyjson.com/data/products/47/thumbnail.jpeg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 48,
@@ -882,7 +976,9 @@
         "https://i.dummyjson.com/data/products/48/3.jpg",
         "https://i.dummyjson.com/data/products/48/4.jpg",
         "https://i.dummyjson.com/data/products/48/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 49,
@@ -900,7 +996,9 @@
         "https://i.dummyjson.com/data/products/49/2.jpg",
         "https://i.dummyjson.com/data/products/49/3.webp",
         "https://i.dummyjson.com/data/products/49/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 50,
@@ -917,7 +1015,9 @@
         "https://i.dummyjson.com/data/products/50/1.jpeg",
         "https://i.dummyjson.com/data/products/50/2.jpg",
         "https://i.dummyjson.com/data/products/50/3.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 51,
@@ -935,7 +1035,9 @@
         "https://i.dummyjson.com/data/products/51/2.jpg",
         "https://i.dummyjson.com/data/products/51/3.jpg",
         "https://i.dummyjson.com/data/products/51/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 52,
@@ -954,7 +1056,9 @@
         "https://i.dummyjson.com/data/products/52/3.jpg",
         "https://i.dummyjson.com/data/products/52/4.jpg",
         "https://i.dummyjson.com/data/products/52/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 53,
@@ -973,7 +1077,9 @@
         "https://i.dummyjson.com/data/products/53/3.jpg",
         "https://i.dummyjson.com/data/products/53/4.jpg",
         "https://i.dummyjson.com/data/products/53/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 54,
@@ -992,7 +1098,9 @@
         "https://i.dummyjson.com/data/products/54/3.jpg",
         "https://i.dummyjson.com/data/products/54/4.jpg",
         "https://i.dummyjson.com/data/products/54/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 55,
@@ -1011,7 +1119,9 @@
         "https://i.dummyjson.com/data/products/55/3.jpg",
         "https://i.dummyjson.com/data/products/55/4.jpg",
         "https://i.dummyjson.com/data/products/55/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 56,
@@ -1031,7 +1141,9 @@
         "https://i.dummyjson.com/data/products/56/4.jpg",
         "https://i.dummyjson.com/data/products/56/5.jpg",
         "https://i.dummyjson.com/data/products/56/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 57,
@@ -1050,7 +1162,9 @@
         "https://i.dummyjson.com/data/products/57/3.jpg",
         "https://i.dummyjson.com/data/products/57/4.jpg",
         "https://i.dummyjson.com/data/products/57/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 58,
@@ -1069,7 +1183,9 @@
         "https://i.dummyjson.com/data/products/58/3.jpg",
         "https://i.dummyjson.com/data/products/58/4.jpg",
         "https://i.dummyjson.com/data/products/58/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 59,
@@ -1088,7 +1204,9 @@
         "https://i.dummyjson.com/data/products/59/3.jpg",
         "https://i.dummyjson.com/data/products/59/4.jpg",
         "https://i.dummyjson.com/data/products/59/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 60,
@@ -1106,7 +1224,9 @@
         "https://i.dummyjson.com/data/products/60/2.jpg",
         "https://i.dummyjson.com/data/products/60/3.jpg",
         "https://i.dummyjson.com/data/products/60/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 61,
@@ -1123,7 +1243,9 @@
         "https://i.dummyjson.com/data/products/61/1.jpg",
         "https://i.dummyjson.com/data/products/61/2.png",
         "https://i.dummyjson.com/data/products/61/3.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 62,
@@ -1139,7 +1261,9 @@
       "images": [
         "https://i.dummyjson.com/data/products/62/1.jpg",
         "https://i.dummyjson.com/data/products/62/2.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 63,
@@ -1157,7 +1281,9 @@
         "https://i.dummyjson.com/data/products/63/2.jpg",
         "https://i.dummyjson.com/data/products/63/3.png",
         "https://i.dummyjson.com/data/products/63/4.jpeg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 64,
@@ -1175,7 +1301,9 @@
         "https://i.dummyjson.com/data/products/64/2.webp",
         "https://i.dummyjson.com/data/products/64/3.jpg",
         "https://i.dummyjson.com/data/products/64/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 65,
@@ -1194,7 +1322,9 @@
         "https://i.dummyjson.com/data/products/65/3.jpg",
         "https://i.dummyjson.com/data/products/65/4.webp",
         "https://i.dummyjson.com/data/products/65/thumbnail.webp"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 66,
@@ -1213,7 +1343,9 @@
         "https://i.dummyjson.com/data/products/66/3.jpg",
         "https://i.dummyjson.com/data/products/66/4.JPG",
         "https://i.dummyjson.com/data/products/66/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 67,
@@ -1232,7 +1364,9 @@
         "https://i.dummyjson.com/data/products/67/3.jpg",
         "https://i.dummyjson.com/data/products/67/4.jpg",
         "https://i.dummyjson.com/data/products/67/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 68,
@@ -1248,7 +1382,9 @@
       "images": [
         "https://i.dummyjson.com/data/products/68/1.jpg",
         "https://i.dummyjson.com/data/products/68/2.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 69,
@@ -1267,7 +1403,9 @@
         "https://i.dummyjson.com/data/products/69/3.webp",
         "https://i.dummyjson.com/data/products/69/4.jpg",
         "https://i.dummyjson.com/data/products/69/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 70,
@@ -1284,7 +1422,9 @@
         "https://i.dummyjson.com/data/products/70/1.jpg",
         "https://i.dummyjson.com/data/products/70/2.jpg",
         "https://i.dummyjson.com/data/products/70/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 71,
@@ -1302,7 +1442,9 @@
         "https://i.dummyjson.com/data/products/71/2.jpg",
         "https://i.dummyjson.com/data/products/71/3.webp",
         "https://i.dummyjson.com/data/products/71/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 72,
@@ -1321,7 +1463,9 @@
         "https://i.dummyjson.com/data/products/72/3.webp",
         "https://i.dummyjson.com/data/products/72/4.jpg",
         "https://i.dummyjson.com/data/products/72/thumbnail.webp"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 73,
@@ -1339,7 +1483,9 @@
         "https://i.dummyjson.com/data/products/73/2.webp",
         "https://i.dummyjson.com/data/products/73/3.jpg",
         "https://i.dummyjson.com/data/products/73/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 74,
@@ -1358,7 +1504,9 @@
         "https://i.dummyjson.com/data/products/74/3.jpg",
         "https://i.dummyjson.com/data/products/74/4.jpg",
         "https://i.dummyjson.com/data/products/74/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 75,
@@ -1376,7 +1524,9 @@
         "https://i.dummyjson.com/data/products/75/2.jpg",
         "https://i.dummyjson.com/data/products/75/3.jpg",
         "https://i.dummyjson.com/data/products/75/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 76,
@@ -1393,7 +1543,9 @@
         "https://i.dummyjson.com/data/products/76/1.jpg",
         "https://i.dummyjson.com/data/products/76/2.jpg",
         "https://i.dummyjson.com/data/products/76/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 77,
@@ -1411,7 +1563,9 @@
         "https://i.dummyjson.com/data/products/77/2.jpg",
         "https://i.dummyjson.com/data/products/77/3.jpg",
         "https://i.dummyjson.com/data/products/77/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 78,
@@ -1424,7 +1578,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
+      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 79,
@@ -1437,7 +1593,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
+      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 80,
@@ -1456,7 +1614,9 @@
         "https://i.dummyjson.com/data/products/80/3.png",
         "https://i.dummyjson.com/data/products/80/4.jpg",
         "https://i.dummyjson.com/data/products/80/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 81,
@@ -1475,7 +1635,9 @@
         "https://i.dummyjson.com/data/products/81/3.jpg",
         "https://i.dummyjson.com/data/products/81/4.webp",
         "https://i.dummyjson.com/data/products/81/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 82,
@@ -1494,7 +1656,9 @@
         "https://i.dummyjson.com/data/products/82/3.jpg",
         "https://i.dummyjson.com/data/products/82/4.jpg",
         "https://i.dummyjson.com/data/products/82/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 83,
@@ -1513,7 +1677,9 @@
         "https://i.dummyjson.com/data/products/83/3.jpg",
         "https://i.dummyjson.com/data/products/83/4.jpg",
         "https://i.dummyjson.com/data/products/83/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 84,
@@ -1530,7 +1696,9 @@
         "https://i.dummyjson.com/data/products/84/1.jpg",
         "https://i.dummyjson.com/data/products/84/2.jpg",
         "https://i.dummyjson.com/data/products/84/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 85,
@@ -1547,7 +1715,9 @@
         "https://i.dummyjson.com/data/products/85/1.jpg",
         "https://i.dummyjson.com/data/products/85/2.jpg",
         "https://i.dummyjson.com/data/products/85/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 86,
@@ -1566,7 +1736,9 @@
         "https://i.dummyjson.com/data/products/86/3.jpg",
         "https://i.dummyjson.com/data/products/86/4.jpg",
         "https://i.dummyjson.com/data/products/86/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 87,
@@ -1585,7 +1757,9 @@
         "https://i.dummyjson.com/data/products/87/3.jpg",
         "https://i.dummyjson.com/data/products/87/4.jpg",
         "https://i.dummyjson.com/data/products/87/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 88,
@@ -1604,7 +1778,9 @@
         "https://i.dummyjson.com/data/products/88/3.jpg",
         "https://i.dummyjson.com/data/products/88/4.webp",
         "https://i.dummyjson.com/data/products/88/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 89,
@@ -1623,7 +1799,9 @@
         "https://i.dummyjson.com/data/products/89/3.jpg",
         "https://i.dummyjson.com/data/products/89/4.jpg",
         "https://i.dummyjson.com/data/products/89/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": false
     },
     {
       "id": 90,
@@ -1642,7 +1820,9 @@
         "https://i.dummyjson.com/data/products/90/3.jpg",
         "https://i.dummyjson.com/data/products/90/4.jpg",
         "https://i.dummyjson.com/data/products/90/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 91,
@@ -1661,7 +1841,9 @@
         "https://i.dummyjson.com/data/products/91/3.jpg",
         "https://i.dummyjson.com/data/products/91/4.jpg",
         "https://i.dummyjson.com/data/products/91/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 92,
@@ -1679,7 +1861,9 @@
         "https://i.dummyjson.com/data/products/92/2.jpg",
         "https://i.dummyjson.com/data/products/92/3.jpg",
         "https://i.dummyjson.com/data/products/92/4.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 93,
@@ -1698,7 +1882,9 @@
         "https://i.dummyjson.com/data/products/93/3.jpg",
         "https://i.dummyjson.com/data/products/93/4.jpg",
         "https://i.dummyjson.com/data/products/93/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": true
     },
     {
       "id": 94,
@@ -1716,7 +1902,9 @@
         "https://i.dummyjson.com/data/products/94/2.jpg",
         "https://i.dummyjson.com/data/products/94/3.jpg",
         "https://i.dummyjson.com/data/products/94/thumbnail.webp"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 95,
@@ -1735,7 +1923,9 @@
         "https://i.dummyjson.com/data/products/95/3.jpg",
         "https://i.dummyjson.com/data/products/95/4.jpg",
         "https://i.dummyjson.com/data/products/95/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 96,
@@ -1754,7 +1944,9 @@
         "https://i.dummyjson.com/data/products/96/3.jpg",
         "https://i.dummyjson.com/data/products/96/4.jpg",
         "https://i.dummyjson.com/data/products/96/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 97,
@@ -1773,7 +1965,9 @@
         "https://i.dummyjson.com/data/products/97/3.jpg",
         "https://i.dummyjson.com/data/products/97/4.webp",
         "https://i.dummyjson.com/data/products/97/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 98,
@@ -1792,7 +1986,9 @@
         "https://i.dummyjson.com/data/products/98/3.jpg",
         "https://i.dummyjson.com/data/products/98/4.jpg",
         "https://i.dummyjson.com/data/products/98/thumbnail.jpg"
-      ]
+      ],
+      "tracking": false,
+      "delivery": true
     },
     {
       "id": 99,
@@ -1811,7 +2007,9 @@
         "https://i.dummyjson.com/data/products/99/3.jpg",
         "https://i.dummyjson.com/data/products/99/4.jpg",
         "https://i.dummyjson.com/data/products/99/thumbnail.jpg"
-      ]
+      ],
+      "tracking": true,
+      "delivery": false
     },
     {
       "id": 100,
