@@ -18,12 +18,14 @@ function validateInput(input: RefObject<HTMLInputElement>) {
   const value = input.current?.value;
   const message = input.current?.parentElement?.querySelector('.absolute');
   if (value !== '') {
-    input.current?.classList.remove('border-2', 'border-red-500');
+    input.current?.classList.add('border-slate-200');
+    input.current?.classList.remove('border-2', 'border-red-500!');
     message?.classList.remove('visible');
     message?.classList.add('invisible');
     return true;
   } else {
     if (input.current?.type !== 'file') {
+      input.current?.classList.remove('border-slate-200');
       input.current?.classList.add('border-2', 'border-red-500');
     }
     message?.classList.remove('invisible');
@@ -36,11 +38,13 @@ function validateCategorySelect(select: RefObject<HTMLSelectElement>) {
   const value = select.current?.value;
   const message = select.current?.parentElement?.querySelector('.absolute');
   if (value !== 'defaultValue') {
+    select.current?.classList.add('border-slate-200');
     select.current?.classList.remove('border-2', 'border-red-500');
     message?.classList.remove('visible');
     message?.classList.add('invisible');
     return true;
   } else {
+    select.current?.classList.remove('border-slate-200');
     select.current?.classList.add('border-2', 'border-red-500');
     message?.classList.remove('invisible');
     message?.classList.add('visible');
