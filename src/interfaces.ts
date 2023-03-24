@@ -14,7 +14,7 @@ export interface IProduct {
   images?: string[];
   delivery?: boolean;
   tracking?: boolean;
-  new?: boolean
+  new?: boolean;
 }
 
 export interface IValidationFields {

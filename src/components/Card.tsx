@@ -1,5 +1,4 @@
 import React from 'react';
-import starIcon from '../assets/icons/star.png';
 import { ReactComponent as IconHeart } from '../assets/icons/heart.svg';
 import { ReactComponent as IconStock } from '../assets/icons/stock.svg';
 import { ReactComponent as IconTracking } from '../assets/icons/tracking.svg';

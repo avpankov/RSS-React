@@ -19,7 +19,7 @@ function validateInput(input: RefObject<HTMLInputElement>) {
   const message = input.current?.parentElement?.querySelector('.absolute');
   if (value !== '') {
     input.current?.classList.add('border-slate-200');
-    input.current?.classList.remove('border-2', 'border-red-500!');
+    input.current?.classList.remove('border-2', 'border-red-500');
     message?.classList.remove('visible');
     message?.classList.add('invisible');
     return true;

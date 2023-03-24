@@ -123,7 +123,7 @@ class MyForm extends React.Component<unknown, FormStateType> {
           <Form
             onSubmit={(event) => this.handleSubmit(event)}
             onReset={(event) => (event.target as HTMLFormElement).reset}
-            id="form"
+            name="myForm"
           >
             <div className="my-6">
               <label className="flex w-full items-center relative">
