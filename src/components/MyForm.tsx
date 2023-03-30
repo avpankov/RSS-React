@@ -1,91 +1,81 @@
-import { IProduct, IValidationFields } from 'interfaces';
-import React, { createRef, FormEvent, RefObject } from 'react';
+import { IProduct } from 'interfaces';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Form } from 'react-router-dom';
-import products from '../data/products.json';
+import productsData from '../data/products.json';
 import ListOfCards from './ListOfCards';
 import { determineTodaysDate } from '../utils/utils';
-import { validateForm } from '../utils/validateForm';
 import { ReactComponent as IconCheck } from '../assets/icons/check.svg';
 import { useForm } from 'react-hook-form';
 
-// interface FormStateType {
-//   productImageUrl: string;
-//   products: IProduct[];
-//   showMessage: boolean;
-// }
-
 function MyForm() {
-  // this.state = {
-  //   productImageUrl: '',
-  //   products: products.products,
-  //   showMessage: false,
-  // };
+  const [message, setMessage] = useState(false);
+  const [products, setProducts] = useState<IProduct[]>(productsData.products);
+  const [file, setFile] = useState<File>();
+  const [fileDataURL, setFileDataURL] = useState('');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const { register, handleSubmit } = useForm();
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+  };
 
-  // const handleUploadedImage = () => {
-  //   const files = (this.thumbnail.current?.files as FileList)[0];
-  //   if (files) {
-  //     const fileReader = new FileReader();
-  //     fileReader.readAsDataURL(files);
-  //     fileReader.onload = () => {
-  //       if (typeof fileReader.result === 'string') {
-  //         this.setState({ productImageUrl: fileReader.result });
-  //       }
-  //     };
-  //   }
-  // };
-
-  // const handleRadioValue = () => {
-  //   const radio = this.tracking.current as HTMLInputElement;
-  //   const inputs = radio.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
-  //   const arr = Array.from(inputs);
-  //   return arr.find((el) => el.checked)?.value === 'on' ? true : false;
-  // };
+  useEffect(() => {
+    let fileReader: FileReader;
+    if (file) {
+      fileReader = new FileReader();
+      fileReader.onload = () => {
+        if (typeof fileReader.result === 'string') {
+          setFileDataURL(fileReader.result);
+        }
+      };
+      fileReader.readAsDataURL(file);
+    }
+    return () => {
+      if (fileReader && fileReader.readyState === 1) {
+        fileReader.abort();
+      }
+    };
+  }, [file]);
 
   const onSubmit = (data: any) => {
-    console.log(data);
-    // const fields: IValidationFields = {
-    //   title: this.title,
-    //   brand: this.brand,
-    //   category: this.category,
-    //   price: this.price,
-    //   discountPercentage: this.discountPercentage,
-    //   stock: this.stock,
-    //   date: this.date,
-    //   thumbnail: this.thumbnail,
-    // };
-    // if (validateForm(fields)) {
-    //   const arr = this.state.products;
-    //   const newProduct: IProduct = {
-    //     id: arr.length + 1,
-    //     title: (this.title.current as HTMLInputElement).value,
-    //     description: (this.description.current as HTMLTextAreaElement).value,
-    //     price: Number((this.price.current as HTMLInputElement).value),
-    //     discountPercentage: Number((this.discountPercentage.current as HTMLInputElement).value),
-    //     stock: Number((this.stock.current as HTMLInputElement).value),
-    //     brand: (this.brand.current as HTMLInputElement).value,
-    //     category: (this.category.current as HTMLSelectElement).value,
-    //     thumbnail: this.state.productImageUrl,
-    //     delivery: (this.delivery.current as HTMLInputElement).checked,
-    //     tracking: this.handleRadioValue(),
-    //     new: true,
-    //   };
-    //   arr.push(newProduct);
-    //   this.setState({ products: arr, showMessage: true });
-    //   setTimeout(() => {
-    //     this.setState({ showMessage: false });
-    //   }, 3000);
-    //   (event.target as HTMLFormElement).reset();
-    // }
+    const arr: IProduct[] = products;
+
+    const newProduct: IProduct = {
+      id: arr.length + 1,
+      title: data.title,
+      description: data.description,
+      price: Number(data.price),
+      discountPercentage: Number(data.discount),
+      stock: Number(data.stock),
+      brand: data.brand,
+      category: data.category,
+      thumbnail: fileDataURL,
+      delivery: data.delivery,
+      tracking: data.tracking,
+      new: true,
+    };
+
+    arr.push(newProduct);
+    setProducts(arr);
+    setMessage(true);
+    setTimeout(() => {
+      setMessage(false);
+    }, 3000);
+    reset();
   };
 
   return (
     <div className="container mx-auto">
-      {/* {
+      {
         <div
           className={`fixed flex items-center space-x-3 px-5 py-3 bg-green-500 text-white rounded-md right-2 top-[6px] opacity-0 duration-[0.3s] select-none ${
-            this.state.showMessage && 'opacity-100'
+            message && 'opacity-100'
           }`}
         >
           <span>
@@ -93,23 +83,25 @@ function MyForm() {
           </span>
           <span className="font-semibold">Data has been saved</span>
         </div>
-      } */}
+      }
       <div className="w-1/2 mx-auto py-6">
         <h2 className="text-xl font-semibold">New product form</h2>
-        <Form
-          onSubmit={handleSubmit(onSubmit)}
-          onReset={(event) => (event.target as HTMLFormElement).reset}
-          name="myForm"
-        >
+        <Form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()} name="myForm">
           <div className="my-6">
             <label className="flex w-full items-center relative">
               <span className="w-[32%] font-semibold">Product title</span>
               <input
                 type="text"
-                className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                className={`${
+                  errors.title ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] p-4 rounded-md outline-brand`}
                 {...register('title', { required: true })}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.title ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -120,23 +112,30 @@ function MyForm() {
               <input
                 type="text"
                 {...register('brand', { required: true })}
-                className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                className={`${
+                  errors.brand ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] p-4 rounded-md outline-brand`}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.brand ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
           </div>
-          {/* <div className="my-6">
+          <div className="my-6">
             <label className="flex w-full items-center relative">
               <span className="w-[32%] font-semibold">Category</span>
               <select
-                name="category"
-                ref={this.category}
-                defaultValue="defaultValue"
-                className="w-[68%] h-[48px] px-4 py-2 rounded-md border border-slate-200 outline-brand"
+                defaultValue=""
+                {...register('category', { required: 'Choose category' })}
+                className={`${
+                  errors.category ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] px-4 py-2 rounded-md outline-brand`}
               >
-                <option value="defaultValue" disabled>
+                <option value="" disabled>
                   Choose category
                 </option>
                 <option value="smartphones">smartphones</option>
@@ -160,7 +159,11 @@ function MyForm() {
                 <option value="motorcycle">motorcycle</option>
                 <option value="lighting">lighting</option>
               </select>
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.category ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -170,12 +173,16 @@ function MyForm() {
               <span className="w-[32%] font-semibold">Price ($)</span>
               <input
                 type="number"
-                name="price"
-                min={1}
-                ref={this.price}
-                className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                {...register('price', { required: true, min: 1 })}
+                className={`${
+                  errors.price ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] p-4 rounded-md outline-brand`}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.price ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -185,13 +192,16 @@ function MyForm() {
               <span className="w-[32%] font-semibold">Discount (%)</span>
               <input
                 type="number"
-                name="price"
-                min={1}
-                max={99}
-                ref={this.discountPercentage}
-                className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                {...register('discount', { required: true, min: 1, max: 99 })}
+                className={`${
+                  errors.discount ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] p-4 rounded-md outline-brand`}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.discount ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -201,12 +211,16 @@ function MyForm() {
               <span className="w-[32%] font-semibold">Stock</span>
               <input
                 type="number"
-                name="stock"
-                min={1}
-                ref={this.stock}
-                className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                {...register('stock', { required: true, min: 1 })}
+                className={`${
+                  errors.stock ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] p-4 rounded-md outline-brand`}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.stock ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -216,12 +230,17 @@ function MyForm() {
               <span className="w-[32%] font-semibold">Delivery availability from</span>
               <input
                 type="date"
-                name="date"
                 min={determineTodaysDate()}
-                ref={this.date}
-                className="w-[68%] h-[48px] p-4 rounded-md border border-slate-200 outline-brand"
+                {...register('date', { required: true })}
+                className={`${
+                  errors.date ? 'border-2 border-red-500' : 'border border-slate-200'
+                } w-[68%] h-[48px] p-4 rounded-md outline-brand`}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.date ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -229,13 +248,13 @@ function MyForm() {
           <div className="my-6">
             <label className="flex w-full items-center relative">
               <span className="w-[32%] font-semibold">Free delivery</span>
-              <input type="checkbox" name="agreement" ref={this.delivery} />
+              <input type="checkbox" {...register('delivery')} />
             </label>
           </div>
           <div className="my-6">
             <div className="flex w-full items-center relative">
               <span className="w-[32%] font-semibold">Track delivery status</span>
-              <div className="flex space-x-4" ref={this.tracking}>
+              <div className="flex space-x-4" {...register('tracking')}>
                 <label className="flex items-center space-x-1">
                   <input type="radio" name="tracking" value="on" />
                   <span>on</span>
@@ -252,12 +271,15 @@ function MyForm() {
               <span className="w-[32%] font-semibold">Upload image</span>
               <input
                 type="file"
-                name="thumbnail"
-                ref={this.thumbnail}
+                {...register('thumbnail', { required: true })}
                 accept=".jpg, .jpeg, .png"
-                onChange={() => this.handleUploadedImage()}
+                onChange={(e) => handleFileChange(e)}
               />
-              <span className="absolute invisible -bottom-5 left-[32%] text-red-500 text-sm">
+              <span
+                className={`${
+                  errors.thumbnail ? 'visible' : 'invisible'
+                } absolute -bottom-5 left-[32%] text-red-500 text-sm`}
+              >
                 This field is required.
               </span>
             </label>
@@ -266,13 +288,12 @@ function MyForm() {
             <label className="flex w-full items-center relative">
               <span className="w-[32%] font-semibold">Description</span>
               <textarea
-                name="description"
-                ref={this.description}
+                {...register('description')}
                 rows={2}
                 className="w-[68%] px-4 py-2 rounded-md border border-slate-200 outline-brand"
               ></textarea>
             </label>
-          </div> */}
+          </div>
           <div className="space-x-4">
             <button
               type="submit"
@@ -289,12 +310,12 @@ function MyForm() {
           </div>
         </Form>
       </div>
-      {/* {this.state.products.filter((product) => product.new).length > 0 && (
+      {products.filter((product) => product.new).length > 0 && (
         <h2 className="text-xl font-semibold mb-6">List of my products</h2>
       )}
       <section className="flex flex-row flex-wrap justify-start gap-6 mb-6">
-        <ListOfCards products={this.state.products.filter((product) => product.new)} />
-      </section> */}
+        <ListOfCards products={products.filter((product) => product.new)} />
+      </section>
     </div>
   );
 }
