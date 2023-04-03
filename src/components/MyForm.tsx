@@ -5,7 +5,7 @@ import productsData from '../data/products.json';
 import ListOfCards from './ListOfCards';
 import { determineTodaysDate } from '../utils/utils';
 import { ReactComponent as IconCheck } from '../assets/icons/check.svg';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 
 function MyForm() {
   const [message, setMessage] = useState(false);
@@ -43,7 +43,7 @@ function MyForm() {
     };
   }, [file]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FieldValues) => {
     const arr: IProduct[] = products;
 
     const newProduct: IProduct = {
