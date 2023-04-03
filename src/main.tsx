@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Root from './routes/Root';
-import MainPage from './pages/MainPage';
-import NotFoundPage from './pages/NotFoundPage';
-import AboutUsPage from './pages/AboutUsPage';
-import FormPage from './components/MyForm';
+import MainPage from './pages/MainPage/MainPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
+import FormPage from './components/MyForm/MyForm';
 import './index.css';
 
 const router = createBrowserRouter([

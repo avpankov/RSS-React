@@ -1,6 +1,6 @@
 import { it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import products from '../data/products.json';
+import products from '../../data/products.json';
 import ListOfCards from './ListOfCards';
 
 it('Renders product card title', () => {
