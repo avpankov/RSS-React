@@ -1,17 +1,26 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import searchIcon from '../../assets/icons/search.svg';
 
 function SearchBar() {
   const [searchInputValue, setSearchInputValue] = useState(
     localStorage.getItem('searchInputValue') || ''
   );
+  const searchInputValueRef = useRef(searchInputValue);
 
   useEffect(() => {
-    localStorage.setItem('searchInputValue', searchInputValue);
-  }, [searchInputValue]);
+    const currentSearch = localStorage.getItem('searchInputValue');
+    if (currentSearch) {
+      setSearchInputValue(currentSearch);
+      searchInputValueRef.current = currentSearch;
+    }
+    return () => {
+      localStorage.setItem('searchInputValue', searchInputValueRef.current);
+    };
+  }, []);
 
   const handleInputChange = (event: ChangeEvent) => {
     setSearchInputValue((event.target as HTMLInputElement).value);
+    searchInputValueRef.current = (event.target as HTMLInputElement).value;
   };
 
   return (
