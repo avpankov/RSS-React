@@ -1,5 +1,5 @@
 import { it } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MyForm from './MyForm';
 import NotFoundPage from '../pages/NotFoundPage';
@@ -19,7 +19,7 @@ describe('MyForm tests', () => {
     const form = screen.getByRole('form');
     expect(form).toBeDefined();
   });
-  it('Handles inputs correctly', () => {
+  it('Handles inputs correctly', async () => {
     render(<RouterProvider router={router} />);
     const title = screen.getByLabelText(/product title/i) as HTMLInputElement;
     expect(title).toBeInTheDocument();
@@ -54,12 +54,13 @@ describe('MyForm tests', () => {
     const trackingOff = screen.getByLabelText(/^off$/i) as HTMLInputElement;
     expect(trackingOff).toBeInTheDocument();
 
-    const submit = screen.getByText('Save');
-    submit.click();
-    expect(Array.from(title.classList)).not.toContain('border-red-500');
-    expect(Array.from(brand.classList)).toContain('border-red-500');
-    expect(Array.from(category.classList)).not.toContain('border-red-500');
-    expect(Array.from(price.classList)).toContain('border-red-500');
+    fireEvent.submit(screen.getByText('Save'));
+    await waitFor(() => {
+      expect(Array.from(title.classList)).not.toContain('border-red-500');
+      expect(Array.from(brand.classList)).toContain('border-red-500');
+      expect(Array.from(category.classList)).not.toContain('border-red-500');
+      expect(Array.from(price.classList)).toContain('border-red-500');
+    });
   });
   it('Imports files properly', () => {
     render(<RouterProvider router={router} />);
