@@ -1,11 +1,11 @@
 import React from 'react';
-import { ReactComponent as IconHeart } from '../assets/icons/heart.svg';
-import { ReactComponent as IconStock } from '../assets/icons/stock.svg';
-import { ReactComponent as IconTracking } from '../assets/icons/tracking.svg';
-import { ReactComponent as IconDelivery } from '../assets/icons/delivery.svg';
+import { ReactComponent as IconHeart } from '../../assets/icons/heart.svg';
+import { ReactComponent as IconStock } from '../../assets/icons/stock.svg';
+import { ReactComponent as IconTracking } from '../../assets/icons/tracking.svg';
+import { ReactComponent as IconDelivery } from '../../assets/icons/delivery.svg';
 import { IProduct } from 'interfaces';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import placeholder from '../assets/images/no_photo.png';
+import placeholder from '../../assets/images/no_photo.png';
 
 interface IProductProps {
   product: IProduct;

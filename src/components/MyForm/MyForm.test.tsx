@@ -2,7 +2,7 @@ import { it } from 'vitest';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MyForm from './MyForm';
-import NotFoundPage from '../pages/NotFoundPage';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([

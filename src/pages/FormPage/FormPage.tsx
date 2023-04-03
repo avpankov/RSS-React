@@ -1,5 +1,5 @@
 import React from 'react';
-import MyForm from '../components/MyForm';
+import MyForm from '../../components/MyForm/MyForm';
 
 function FormPage() {
   return (

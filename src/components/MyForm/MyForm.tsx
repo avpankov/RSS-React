@@ -1,10 +1,10 @@
 import { IProduct } from 'interfaces';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Form } from 'react-router-dom';
-import productsData from '../data/products.json';
-import ListOfCards from './ListOfCards';
-import { determineTodaysDate } from '../utils/utils';
-import { ReactComponent as IconCheck } from '../assets/icons/check.svg';
+import productsData from '../../data/products.json';
+import ListOfCards from '../ListOfCards/ListOfCards';
+import { determineTodaysDate } from '../../utils/utils';
+import { ReactComponent as IconCheck } from '../../assets/icons/check.svg';
 import { FieldValues, useForm } from 'react-hook-form';
 
 function MyForm() {

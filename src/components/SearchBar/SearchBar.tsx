@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import searchIcon from '../assets/icons/search.svg';
+import searchIcon from '../../assets/icons/search.svg';
 
 function SearchBar() {
   const [searchInputValue, setSearchInputValue] = useState(

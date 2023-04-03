@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import ListOfCards from '../components/ListOfCards';
-import products from '../data/products.json';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import ListOfCards from '../../components/ListOfCards/ListOfCards';
+import products from '../../data/products.json';
 
 function MainPage() {
   return (
