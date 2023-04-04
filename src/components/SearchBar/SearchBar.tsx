@@ -50,15 +50,15 @@ function SearchBar({ onEnterPressed }: { onEnterPressed: (value: string) => void
         name="search"
         id="search"
         placeholder="Search"
-        className="peer peer-focus w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
+        className="peer w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
         onChange={(event) => handleInputChange(event)}
         onKeyDown={(event) => handleSearch(event)}
       />
       <button
         onMouseDown={(event) => clearInput(event)}
-        className="peer-focus:visible active:visible peer invisible absolute p-2 hover:bg-slate-200 rounded-md top-[50%] translate-y-[-50%] right-2"
+        className="peer-focus:visible invisible absolute p-2 hover:bg-slate-200 rounded-md top-[50%] translate-y-[-50%] right-2"
       >
-        <IconCross className="w-[16px] h-[16px] opacity-60" />
+        <IconCross className="w-[14px] h-[14px] opacity-60" />
       </button>
     </div>
   );
