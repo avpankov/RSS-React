@@ -13,11 +13,11 @@ export enum type {
   full,
 }
 
-function ListOfCards(props: IListOfCardsProps) {
+function ListOfCards({ cardType, products }: IListOfCardsProps) {
   return (
     <>
-      {props.products.map((product) => {
-        switch (props.cardType) {
+      {products.map((product) => {
+        switch (cardType) {
           case type.short:
             return <ShortCard product={product} key={product.category + product.id} />;
           case type.full:

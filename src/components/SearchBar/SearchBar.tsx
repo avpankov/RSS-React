@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import searchIcon from '../../assets/icons/search.svg';
 
-function SearchBar({ onChange }: { onChange: (value: string) => void }) {
+function SearchBar({ onEnterPressed }: { onEnterPressed: (value: string) => void }) {
   const [searchInputValue, setSearchInputValue] = useState(
     localStorage.getItem('searchInputValue') || ''
   );
@@ -21,7 +21,12 @@ function SearchBar({ onChange }: { onChange: (value: string) => void }) {
   const handleInputChange = (event: ChangeEvent) => {
     setSearchInputValue((event.target as HTMLInputElement).value);
     searchInputValueRef.current = (event.target as HTMLInputElement).value;
-    onChange((event.target as HTMLInputElement).value);
+  };
+
+  const handleSearch = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      onEnterPressed((event.target as HTMLInputElement).value);
+    }
   };
 
   return (
@@ -35,11 +40,12 @@ function SearchBar({ onChange }: { onChange: (value: string) => void }) {
       <input
         type="text"
         value={searchInputValue}
-        onChange={(event) => handleInputChange(event)}
         name="search"
         id="search"
         placeholder="Search"
         className="w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
+        onChange={(event) => handleInputChange(event)}
+        onKeyDown={(event) => handleSearch(event)}
       />
     </div>
   );
