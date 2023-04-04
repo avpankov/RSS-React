@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ReactComponent as IconCross } from '../../assets/icons/cross.svg';
 import searchIcon from '../../assets/icons/search.svg';
 
 function SearchBar({ onEnterPressed }: { onEnterPressed: (value: string) => void }) {
@@ -29,6 +30,12 @@ function SearchBar({ onEnterPressed }: { onEnterPressed: (value: string) => void
     }
   };
 
+  const clearInput = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setSearchInputValue('');
+    searchInputValueRef.current = '';
+  };
+
   return (
     <div className="w-[685px] flex flex-row relative py-6 mx-auto">
       <img
@@ -43,10 +50,16 @@ function SearchBar({ onEnterPressed }: { onEnterPressed: (value: string) => void
         name="search"
         id="search"
         placeholder="Search"
-        className="w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
+        className="peer peer-focus w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
         onChange={(event) => handleInputChange(event)}
         onKeyDown={(event) => handleSearch(event)}
       />
+      <button
+        onMouseDown={(event) => clearInput(event)}
+        className="peer-focus:visible active:visible peer invisible absolute p-2 hover:bg-slate-200 rounded-md top-[50%] translate-y-[-50%] right-2"
+      >
+        <IconCross className="w-[16px] h-[16px] opacity-60" />
+      </button>
     </div>
   );
 }
