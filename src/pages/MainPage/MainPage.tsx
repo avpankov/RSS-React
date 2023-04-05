@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import ListOfCards, { type } from '../../components/ListOfCards/ListOfCards';
 import { getProducts } from '../../api/getProducts';
-import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import { searchProducts } from '../../api/searchProducts';
 
 function MainPage() {
@@ -10,7 +9,6 @@ function MainPage() {
     localStorage.getItem('searchInputValue') || ''
   );
   const [products, setProducts] = useState([]);
-  const [modalWindow, setModalWindow] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleSearch = (value: string) => {
@@ -24,7 +22,7 @@ function MainPage() {
       }
       foo();
     }
-  }, []);
+  });
 
   useEffect(() => {
     async function foo() {
@@ -50,21 +48,15 @@ function MainPage() {
           </div>
         </div>
       ) : products.length > 0 ? (
-        <div
-          className="flex flex-row flex-wrap justify-between gap-6"
-          onClick={() => setModalWindow(true)}
-        >
+        <div className="flex flex-row flex-wrap justify-between gap-6">
           <ListOfCards cardType={type.short} products={products} />
         </div>
       ) : (
         <div>
           <h2 className="mx-auto w-fit font-semibold text-2xl">Nothing Found</h2>
-          <p className="mx-auto w-fit">You searched for '{searchedValue}'</p>
+          <p className="mx-auto w-fit">You searched for &apos;{searchedValue}&apos;</p>
         </div>
       )}
-      <ModalWindow visible={modalWindow} setVisible={setModalWindow}>
-        Modal window
-      </ModalWindow>
     </div>
   );
 }

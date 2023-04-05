@@ -35,7 +35,7 @@ function Card(props: IProductProps) {
           <div>ID: {props.product.id}</div>
         </div>
         <div>
-          <div className="text-sm font-bold text-slate-200 py-1 whitespace-nowrap text-ellipsis overflow-hidden">
+          <div className="text-sm font-bold text-slate-300 py-1 whitespace-nowrap text-ellipsis overflow-hidden">
             {props.product.category} • {props.product.brand.toLowerCase()}
           </div>
         </div>

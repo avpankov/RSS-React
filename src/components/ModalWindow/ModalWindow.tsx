@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { ReactComponent as IconCross } from '../../assets/icons/cross.svg';
 
 interface IModalWindowProps {
   children: ReactNode;
@@ -24,8 +25,17 @@ function ModalWindow({ children, visible, setVisible }: IModalWindowProps) {
 
   return (
     <div className={modalWindowClasses.join(' ')} onClick={() => setVisible(false)}>
-      <div className="bg-white p-6 max-w-2xl rounded-md" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="max-w-[80vw] bg-white p-10 rounded-md relative"
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
+        <button
+          onClick={() => setVisible(false)}
+          className="absolute p-2 hover:bg-slate-200 rounded-md translate-[-50%] right-2 top-2"
+        >
+          <IconCross className="w-[14px] h-[14px] opacity-60" />
+        </button>
       </div>
     </div>
   );
