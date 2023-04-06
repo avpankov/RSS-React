@@ -3,8 +3,7 @@ import { getSingleProduct } from '../../api/getSingleProduct';
 import { IProduct } from 'interfaces';
 import { ReactComponent as IconStock } from '../../assets/icons/stock.svg';
 
-function ProductFullInfo(prop: { id: number }) {
-  const id = prop.id;
+function ProductFullInfo({ id }: { id: number }) {
   const [productInfo, setProductInfo] = useState<IProduct>();
   useEffect(() => {
     async function foo() {

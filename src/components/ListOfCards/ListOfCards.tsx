@@ -3,17 +3,14 @@ import Card from '../Card/Card';
 import { IProduct } from 'interfaces';
 import ShortCard from '../../components/ShortCard/ShortCard';
 
-interface IListOfCardsProps {
-  cardType: type;
-  products: IProduct[];
-}
+type ListOfCardsProps = { cardType: type; products: IProduct[] };
 
 export enum type {
   short,
   full,
 }
 
-function ListOfCards({ cardType, products }: IListOfCardsProps) {
+function ListOfCards({ cardType, products }: ListOfCardsProps) {
   return (
     <>
       {products.map((product) => {

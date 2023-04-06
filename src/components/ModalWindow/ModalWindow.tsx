@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import { ReactComponent as IconCross } from '../../assets/icons/cross.svg';
 
-interface IModalWindowProps {
+type ModalWindowProps = {
   children: ReactNode;
   visible: boolean;
   setVisible: (visible: boolean) => void;
-}
+};
 
-function ModalWindow({ children, visible, setVisible }: IModalWindowProps) {
+function ModalWindow({ children, visible, setVisible }: ModalWindowProps) {
   const modalWindowClasses = [
     'fixed',
     'top-0',

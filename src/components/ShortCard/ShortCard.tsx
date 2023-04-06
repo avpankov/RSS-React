@@ -4,12 +4,9 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import placeholder from '../../assets/images/no_photo.png';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import ProductFullInfo from '../../components/ProductFullInfo/ProductFullInfo';
+import { ProductProps } from '../../components/Card/Card';
 
-interface IProductProps {
-  product: IProduct;
-}
-
-function ShortCard(props: IProductProps) {
+function ShortCard({ product }: ProductProps) {
   const [modalWindow, setModalWindow] = useState(false);
 
   return (
@@ -22,7 +19,7 @@ function ShortCard(props: IProductProps) {
           <div className="w-full h-[195px]">
             <div className={`w-full h-full rounded flex flex-row justify-center items-center`}>
               <LazyLoadImage
-                src={props.product.thumbnail ? props.product.thumbnail : placeholder}
+                src={product.thumbnail ? product.thumbnail : placeholder}
                 alt=""
                 width="100%"
                 height="100%"
@@ -33,18 +30,18 @@ function ShortCard(props: IProductProps) {
           </div>
 
           <h3 className="text-lg font-bold whitespace-nowrap text-ellipsis overflow-hidden">
-            {props.product.title}
+            {product.title}
           </h3>
           <div className="flex flex-row items-center space-x-2">
-            <div className="text-2xl font-bold">{props.product.price}$</div>
+            <div className="text-2xl font-bold">{product.price}$</div>
             <div className="p-1 bg-brand text-xs text-white rounded-md">
-              -{props.product.discountPercentage}%
+              -{product.discountPercentage}%
             </div>
           </div>
         </div>
       </div>
       <ModalWindow visible={modalWindow} setVisible={setModalWindow}>
-        <ProductFullInfo id={props.product.id} />
+        <ProductFullInfo id={product.id} />
       </ModalWindow>
     </>
   );
