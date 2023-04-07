@@ -2,17 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { getSingleProduct } from '../../api/getSingleProduct';
 import { IProduct } from 'interfaces';
 import { ReactComponent as IconStock } from '../../assets/icons/stock.svg';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
-function ProductFullInfo({ id }: { id: number }) {
+function ProductFullInfo({ id }: { id: number | undefined }) {
   const [productInfo, setProductInfo] = useState<IProduct>();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     async function foo() {
-      setProductInfo(await getSingleProduct(id.toString()));
+      if (typeof id === 'number') {
+        setIsLoaded(true);
+        setProductInfo(await getSingleProduct(id.toString()));
+        setIsLoaded(false);
+      }
     }
     foo();
+    console.log(id);
   }, [id]);
 
-  return (
+  return isLoaded ? (
+    <LoadingSpinner />
+  ) : (
     <div className="max-w-2xl">
       <div>
         <div className="rounded flex flex-row justify-center items-center">

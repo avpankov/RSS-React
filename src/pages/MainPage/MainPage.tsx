@@ -20,7 +20,7 @@ function MainPage() {
 
   useEffect(() => {
     if (searchedValue === '') {
-      async function foo() {
+      async function get() {
         try {
           setProducts(await getProducts());
           setError(null);
@@ -30,24 +30,22 @@ function MainPage() {
           }
         }
       }
-      foo();
-    }
-  }, [searchedValue]);
-
-  useEffect(() => {
-    async function foo() {
-      try {
-        setIsLoaded(true);
-        setProducts(await searchProducts(searchedValue));
-        setError(null);
-        setIsLoaded(false);
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          setError(error);
+      get();
+    } else if (searchedValue !== '') {
+      async function search() {
+        try {
+          setIsLoaded(true);
+          setProducts(await searchProducts(searchedValue));
+          setError(null);
+          setIsLoaded(false);
+        } catch (error) {
+          if (error instanceof AxiosError) {
+            setError(error);
+          }
         }
       }
+      search();
     }
-    foo();
   }, [searchedValue]);
 
   return (

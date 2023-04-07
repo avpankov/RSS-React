@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { IProduct } from 'interfaces';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import placeholder from '../../assets/images/no_photo.png';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
@@ -8,11 +7,15 @@ import { ProductProps } from '../../components/Card/Card';
 
 function ShortCard({ product }: ProductProps) {
   const [modalWindow, setModalWindow] = useState(false);
+  const [id, setId] = useState<number>();
 
   return (
     <>
       <div
-        onClick={() => setModalWindow(true)}
+        onClick={() => {
+          setModalWindow(true);
+          setId(product.id);
+        }}
         className="w-[260px] rounded-md bg-white border border-slate-200 hover:drop-shadow-lg duration-200 cursor-pointer"
       >
         <div className="p-4">
@@ -28,7 +31,6 @@ function ShortCard({ product }: ProductProps) {
               />
             </div>
           </div>
-
           <h3 className="text-lg font-bold whitespace-nowrap text-ellipsis overflow-hidden">
             {product.title}
           </h3>
@@ -41,7 +43,7 @@ function ShortCard({ product }: ProductProps) {
         </div>
       </div>
       <ModalWindow visible={modalWindow} setVisible={setModalWindow}>
-        <ProductFullInfo id={product.id} />
+        <ProductFullInfo id={id} />
       </ModalWindow>
     </>
   );
