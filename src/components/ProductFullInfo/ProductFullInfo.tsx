@@ -17,7 +17,6 @@ function ProductFullInfo({ id }: { id: number | undefined }) {
       }
     }
     foo();
-    console.log(id);
   }, [id]);
 
   return isLoaded ? (
