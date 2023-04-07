@@ -3,7 +3,13 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import SearchBar from './SearchBar';
 
 describe('Search bar tests', () => {
-  render(<SearchBar />);
+  render(
+    <SearchBar
+      onEnterPressed={() => {
+        return;
+      }}
+    />
+  );
   const input = screen.getByPlaceholderText(/search/i) as HTMLInputElement;
 
   it('Renders search input', () => {
