@@ -2,7 +2,7 @@ import { IProduct } from 'interfaces';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Form } from 'react-router-dom';
 import productsData from '../../data/products.json';
-import ListOfCards from '../ListOfCards/ListOfCards';
+import ListOfCards, { type } from '../ListOfCards/ListOfCards';
 import { determineTodaysDate } from '../../utils/utils';
 import { ReactComponent as IconCheck } from '../../assets/icons/check.svg';
 import { FieldValues, useForm } from 'react-hook-form';
@@ -314,7 +314,7 @@ function MyForm() {
         <h2 className="text-xl font-semibold mb-6">List of my products</h2>
       )}
       <section className="flex flex-row flex-wrap justify-start gap-6 mb-6">
-        <ListOfCards products={products.filter((product) => product.new)} />
+        <ListOfCards cardType={type.full} products={products.filter((product) => product.new)} />
       </section>
     </div>
   );

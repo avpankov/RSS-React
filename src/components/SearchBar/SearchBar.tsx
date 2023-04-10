@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ReactComponent as IconCross } from '../../assets/icons/cross.svg';
 import searchIcon from '../../assets/icons/search.svg';
 
-function SearchBar() {
+function SearchBar({ onEnterPressed }: { onEnterPressed: (value: string) => void }) {
   const [searchInputValue, setSearchInputValue] = useState(
     localStorage.getItem('searchInputValue') || ''
   );
@@ -23,6 +24,18 @@ function SearchBar() {
     searchInputValueRef.current = (event.target as HTMLInputElement).value;
   };
 
+  const handleSearch = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      onEnterPressed((event.target as HTMLInputElement).value);
+    }
+  };
+
+  const clearInput = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setSearchInputValue('');
+    searchInputValueRef.current = '';
+  };
+
   return (
     <div className="w-[685px] flex flex-row relative py-6 mx-auto">
       <img
@@ -34,12 +47,19 @@ function SearchBar() {
       <input
         type="text"
         value={searchInputValue}
-        onChange={(event) => handleInputChange(event)}
         name="search"
         id="search"
         placeholder="Search"
-        className="w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
+        className="peer w-[100%] h-[48px] p-4 pl-[45px] rounded-md border border-slate-200 outline-brand"
+        onChange={(event) => handleInputChange(event)}
+        onKeyDown={(event) => handleSearch(event)}
       />
+      <button
+        onMouseDown={(event) => clearInput(event)}
+        className="peer-focus:visible invisible absolute p-2 hover:bg-slate-200 rounded-md top-[50%] translate-y-[-50%] right-2"
+      >
+        <IconCross className="w-[14px] h-[14px] opacity-60" />
+      </button>
     </div>
   );
 }

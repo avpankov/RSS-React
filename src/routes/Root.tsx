@@ -74,7 +74,9 @@ class Root extends React.Component<object, { name: string }> {
               </ul>
             </nav>
           </div>
-          <h2 className="absolute left-0">Page: {this.state.name}</h2>
+          <span className="absolute left-2 before:block before:absolute before:-inset-x-2 before:-inset-1 before:-skew-y-6 before:bg-brand inline-block">
+            <span className="relative text-white font-semibold">{this.state.name}</span>,
+          </span>
         </header>
         <main>
           <Outlet />
