@@ -4,17 +4,19 @@ import placeholder from '../../assets/images/no_photo.png';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import ProductFullInfo from '../../components/ProductFullInfo/ProductFullInfo';
 import { ProductProps } from '../../components/Card/Card';
+import { useLazyGetSingleProductQuery } from '../../store/dummyJSON/dummyJSOM.api';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 function ShortCard({ product }: ProductProps) {
   const [modalWindow, setModalWindow] = useState(false);
-  const [id, setId] = useState<number>();
+  const [fetchProduct, { isLoading, data }] = useLazyGetSingleProductQuery();
 
   return (
     <>
       <div
         onClick={() => {
           setModalWindow(true);
-          setId(product.id);
+          fetchProduct(product.id.toString());
         }}
         className="w-[260px] rounded-md bg-white border border-slate-200 hover:drop-shadow-lg duration-200 cursor-pointer"
       >
@@ -43,7 +45,8 @@ function ShortCard({ product }: ProductProps) {
         </div>
       </div>
       <ModalWindow visible={modalWindow} setVisible={setModalWindow}>
-        <ProductFullInfo id={id} />
+        {isLoading && <LoadingSpinner />}
+        {data && <ProductFullInfo product={data} />}
       </ModalWindow>
     </>
   );

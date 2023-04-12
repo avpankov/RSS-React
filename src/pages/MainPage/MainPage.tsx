@@ -5,64 +5,51 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import { getProducts } from '../../api/getProducts';
 import { searchProducts } from '../../api/searchProducts';
 import { AxiosError } from 'axios';
+import {
+  useGetProductsQuery,
+  useLazySearchProductsQuery,
+} from '../../store/dummyJSON/dummyJSOM.api';
+import { IProduct } from 'interfaces';
 
 function MainPage() {
+  const {
+    isFetching: areAllProductsFetching,
+    isError: isAllProductsError,
+    data: allProducts,
+  } = useGetProductsQuery('');
+  const [
+    searchProducts,
+    { isFetching: areSearchedProductsFetching, isError: isSearchError, data: searchedProducts },
+  ] = useLazySearchProductsQuery();
   const [searchedValue, setSearchedValue] = useState(
     localStorage.getItem('searchInputValue') || ''
   );
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState<AxiosError | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  const handleSearch = (value: string) => {
-    setSearchedValue(value);
-  };
+  const [displayedProducts, setDisplayedProducts] = useState<IProduct[]>();
 
   useEffect(() => {
     if (searchedValue === '') {
-      async function get() {
-        try {
-          setProducts(await getProducts());
-          setError(null);
-        } catch (error: unknown) {
-          if (error instanceof AxiosError) {
-            setError(error);
-          }
-        }
-      }
-      get();
-    } else if (searchedValue !== '') {
-      async function search() {
-        try {
-          setIsLoaded(true);
-          setProducts(await searchProducts(searchedValue));
-          setError(null);
-          setIsLoaded(false);
-        } catch (error) {
-          if (error instanceof AxiosError) {
-            setError(error);
-          }
-        }
-      }
-      search();
+      setDisplayedProducts(allProducts);
+    } else {
+      setDisplayedProducts(searchedProducts);
     }
-  }, [searchedValue]);
+  }, [searchedValue, allProducts, searchedProducts]);
+
+  const handleSearch = (value: string) => {
+    setSearchedValue(value);
+    searchProducts(value);
+  };
 
   return (
     <div className="container mx-auto">
       <SearchBar onEnterPressed={handleSearch} />
-      {error ? (
-        <div className="text-center">
-          <h2 className="font-semibold text-2xl">{error.message}</h2>
-          {(error.response?.data as AxiosError).message && (
-            <p>{(error.response?.data as AxiosError).message}</p>
-          )}
-        </div>
-      ) : isLoaded ? (
+      {isAllProductsError || isSearchError ? (
+        <h2 className="text-center font-semibold text-2xl">Something went wrong</h2>
+      ) : areAllProductsFetching || areSearchedProductsFetching ? (
         <LoadingSpinner />
-      ) : products.length > 0 ? (
+      ) : displayedProducts && displayedProducts.length > 0 ? (
         <div className="flex flex-row flex-wrap justify-between gap-6">
-          <ListOfCards cardType={type.short} products={products} />
+          <ListOfCards cardType={type.short} products={displayedProducts} />
         </div>
       ) : (
         <div className="text-center">
