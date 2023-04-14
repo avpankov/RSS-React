@@ -1,6 +1,8 @@
 import { it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ShortCard from './ShortCard';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 
 const product = {
   id: 27,
@@ -24,7 +26,11 @@ const product = {
 };
 
 it('Renders short card title', () => {
-  render(<ShortCard product={product} />);
+  render(
+    <Provider store={store}>
+      <ShortCard product={product} />
+    </Provider>
+  );
   const title = screen.getByText('Flying Wooden Bird');
   expect(title).toBeInTheDocument();
 });

@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 import MyForm from './MyForm';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 
 const router = createBrowserRouter([
   {
@@ -15,12 +17,20 @@ const router = createBrowserRouter([
 
 describe('MyForm tests', () => {
   it('Renders from', () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
     const form = screen.getByRole('form');
     expect(form).toBeDefined();
   });
   it('Handles inputs correctly', async () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
     const title = screen.getByLabelText(/product title/i) as HTMLInputElement;
     expect(title).toBeInTheDocument();
     fireEvent.change(title, { target: { value: 'Note 10' } });
@@ -63,7 +73,11 @@ describe('MyForm tests', () => {
     });
   });
   it('Imports files properly', () => {
-    render(<RouterProvider router={router} />);
+    render(
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    );
     const file = screen.getByLabelText(/Upload image/i) as HTMLInputElement;
     expect(file).toBeTruthy();
     const files = [

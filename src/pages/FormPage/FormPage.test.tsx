@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import FormPage from './FormPage';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 
 it('FormPage renders correctly', () => {
   const RoutesTest = [
@@ -10,7 +12,11 @@ it('FormPage renders correctly', () => {
     },
   ];
   const router = createMemoryRouter(RoutesTest);
-  render(<RouterProvider router={router} />);
+  render(
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
   const formsPage = screen.getByText(/New product form/i);
   expect(formsPage).toBeTruthy;
 });

@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from '../Card/Card';
-import { IProduct } from 'interfaces';
+import { IMyProduct, IProduct } from 'interfaces';
 import ShortCard from '../../components/ShortCard/ShortCard';
 
-type ListOfCardsProps = { cardType: type; products: IProduct[] };
+type ListOfCardsProps = { cardType: type; products: IProduct[] | IMyProduct[] };
 
 export enum type {
   short,
@@ -13,14 +13,14 @@ export enum type {
 function ListOfCards({ cardType, products }: ListOfCardsProps) {
   return (
     <>
-      {products.map((product) => {
+      {products.map((product: IProduct | IMyProduct) => {
         switch (cardType) {
           case type.short:
-            return <ShortCard product={product} key={product.category + product.id} />;
+            return <ShortCard product={product} key={product.id} />;
           case type.full:
-            return <Card product={product} key={product.category + product.id} />;
+            return <Card product={product} key={product.id} />;
           default:
-            return <Card product={product} key={product.category + product.id} />;
+            return <Card product={product} key={product.id} />;
         }
       })}
     </>

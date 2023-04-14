@@ -1,15 +1,16 @@
-import { IProduct } from 'interfaces';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Form } from 'react-router-dom';
-import productsData from '../../data/products.json';
+import { FieldValues, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { IMyProduct } from 'interfaces';
 import ListOfCards, { type } from '../ListOfCards/ListOfCards';
 import { determineTodaysDate } from '../../utils/utils';
 import { ReactComponent as IconCheck } from '../../assets/icons/check.svg';
-import { FieldValues, useForm } from 'react-hook-form';
+import { RootState } from '../../store';
+import { setMyProductList } from '../../store/slices/formSlice';
 
 function MyForm() {
   const [message, setMessage] = useState(false);
-  const [products, setProducts] = useState<IProduct[]>(productsData.products);
   const [file, setFile] = useState<File>();
   const [fileDataURL, setFileDataURL] = useState('');
   const {
@@ -18,6 +19,8 @@ function MyForm() {
     reset,
     formState: { errors },
   } = useForm();
+  const form = useSelector((state: RootState) => state.form);
+  const dispatch = useDispatch();
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -44,9 +47,8 @@ function MyForm() {
   }, [file]);
 
   const onSubmit = (data: FieldValues) => {
-    const arr: IProduct[] = products;
-
-    const newProduct: IProduct = {
+    const arr: IMyProduct[] = [...form.myProductList];
+    const newProduct: IMyProduct = {
       id: arr.length + 1,
       title: data.title,
       description: data.description,
@@ -60,9 +62,8 @@ function MyForm() {
       tracking: data.tracking,
       new: true,
     };
-
     arr.push(newProduct);
-    setProducts(arr);
+    dispatch(setMyProductList(arr));
     setMessage(true);
     setTimeout(() => {
       setMessage(false);
@@ -310,11 +311,14 @@ function MyForm() {
           </div>
         </Form>
       </div>
-      {products.filter((product) => product.new).length > 0 && (
+      {form.myProductList.filter((product) => product.new).length > 0 && (
         <h2 className="text-xl font-semibold mb-6">List of my products</h2>
       )}
       <section className="flex flex-row flex-wrap justify-start gap-6 mb-6">
-        <ListOfCards cardType={type.full} products={products.filter((product) => product.new)} />
+        <ListOfCards
+          cardType={type.full}
+          products={form.myProductList.filter((product) => product.new)}
+        />
       </section>
     </div>
   );

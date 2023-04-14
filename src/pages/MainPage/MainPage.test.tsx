@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import MainPage from './MainPage';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 
 it('MainPage renders correctly', () => {
   const RoutesTest = [
@@ -10,7 +12,11 @@ it('MainPage renders correctly', () => {
     },
   ];
   const router = createMemoryRouter(RoutesTest);
-  render(<RouterProvider router={router} />);
+  render(
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
   const mainPage = screen.getByPlaceholderText(/Search/i);
   expect(mainPage).toBeTruthy;
 });

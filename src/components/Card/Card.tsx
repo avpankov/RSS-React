@@ -3,11 +3,11 @@ import { ReactComponent as IconHeart } from '../../assets/icons/heart.svg';
 import { ReactComponent as IconStock } from '../../assets/icons/stock.svg';
 import { ReactComponent as IconTracking } from '../../assets/icons/tracking.svg';
 import { ReactComponent as IconDelivery } from '../../assets/icons/delivery.svg';
-import { IProduct } from 'interfaces';
+import { IMyProduct } from 'interfaces';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import placeholder from '../../assets/images/no_photo.png';
 
-export type ProductProps = { product: IProduct };
+type ProductProps = { product: IMyProduct };
 
 function Card({ product }: ProductProps) {
   return (
