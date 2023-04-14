@@ -3,9 +3,11 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import placeholder from '../../assets/images/no_photo.png';
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 import ProductFullInfo from '../../components/ProductFullInfo/ProductFullInfo';
-import { ProductProps } from '../../components/Card/Card';
-import { useLazyGetSingleProductQuery } from '../../store/dummyJSON/dummyJSOM.api';
+import { useLazyGetSingleProductQuery } from '../../store/api/dummyJSOM.api';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import { IProduct } from 'interfaces';
+
+type ProductProps = { product: IProduct };
 
 function ShortCard({ product }: ProductProps) {
   const [modalWindow, setModalWindow] = useState(false);

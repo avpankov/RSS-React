@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import ListOfCards, { type } from '../../components/ListOfCards/ListOfCards';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import { useGetProductsQuery } from '../../store/dummyJSON/dummyJSOM.api';
+import { useGetProductsQuery } from '../../store/api/dummyJSOM.api';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { setIsError, setIsLoading, setProductList } from '../../store/slices/searchSlice';
@@ -26,12 +26,14 @@ function MainPage() {
       dispatch(setProductList(data));
       dispatch(setIsLoading(false));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   useEffect(() => {
     if (!productList.length) {
       setIncorrectSearch(search);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productList]);
 
   return (

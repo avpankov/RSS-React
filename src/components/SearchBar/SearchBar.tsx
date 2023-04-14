@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconCross } from '../../assets/icons/cross.svg';
 import searchIcon from '../../assets/icons/search.svg';
 import { RootState } from '../../store';
-import { useLazySearchProductsQuery } from '../../store/dummyJSON/dummyJSOM.api';
+import { useLazySearchProductsQuery } from '../../store/api/dummyJSOM.api';
 import {
   setIsError,
   setIsLoading,
@@ -42,6 +42,7 @@ function SearchBar() {
       dispatch(setIsLoading(false));
       dispatch(setIsError(true));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isError]);
 
   return (

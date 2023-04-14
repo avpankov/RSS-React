@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IProduct } from "interfaces";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { IProduct } from 'interfaces';
 
 interface IState {
   search: string;
@@ -13,7 +13,7 @@ const initialState: IState = {
   productList: [],
   isLoading: false,
   isError: false,
-}
+};
 
 export const searchSlice = createSlice({
   name: 'search',
@@ -23,16 +23,16 @@ export const searchSlice = createSlice({
       state.search = action.payload;
     },
     setProductList: (state, action: PayloadAction<IProduct[]>) => {
-      state.productList = action.payload
+      state.productList = action.payload;
     },
     setIsLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload
+      state.isLoading = action.payload;
     },
     setIsError: (state, action: PayloadAction<boolean>) => {
-      state.isError = action.payload
-    }
-  }
-})
+      state.isError = action.payload;
+    },
+  },
+});
 
-export const {setSearch, setProductList, setIsLoading, setIsError} = searchSlice.actions;
+export const { setSearch, setProductList, setIsLoading, setIsError } = searchSlice.actions;
 export default searchSlice.reducer;
