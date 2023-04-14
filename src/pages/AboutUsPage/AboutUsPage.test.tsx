@@ -7,5 +7,5 @@ it('Shows text message', () => {
   const heading = screen.getByRole('heading', {
     level: 2,
   });
-  expect(heading).toHaveTextContent(/About us page/i);
+  expect(heading).toHaveTextContent(/Artyom/i);
 });
